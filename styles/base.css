@@ -1,30 +1,29 @@
-/* base.css */
-
-/* Adjusting the root color scheme */
 :root {
-  --primary-color: #0a2342;  /* Dark blue */
-  --accent-color: #2e8bc0;   /* Accent blue */
-  --text-light: #ffffff;     /* Light text for dark backgrounds */
-  --text-dark: #f0f0f0;      /* Dark text for light backgrounds */
-  --background-color: #eaeaea; /* Updated background color for better contrast (WCAG AA) */
-  --button-hover-color: #145da0; /* Button hover color */
-  --border-radius: 8px; /* Standard border radius for consistency */
-  --font-size-base: 16px; /* Base font size for consistent typography */
+  --primary-color: #003b5c;  /* Dark blue */
+  --accent-color: #1f6d8c;   /* Lighter blue for accents */
+  --text-light: #ffffff;     /* White text for dark backgrounds */
+  --text-dark: #111111;      /* Very dark gray text for lighter backgrounds */
+  --background-color: #eaeaea; /* Light gray background */
+  --button-hover-color: #145da0; /* Lighter button hover color */
+  --blue-text: #0084a1; /* Adjusted blue for better contrast and accessibility */
+  --border-radius: 8px; /* Standard border radius */
+  --font-size-base: 16px; /* Base font size */
 }
 
 body {
   font-family: 'Karla', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
-  color: #333;
+  background-color: var(--background-color); /* Light background */
+  color: var(--text-dark);  /* Dark text for better readability */
   line-height: 1.6;
   font-size: var(--font-size-base);
 }
 
+/* Ensure high contrast and accessibility for header */
 header {
-  background-color: var(--primary-color);
-  color: var(--text-light);
+  background-color: var(--primary-color);  /* Dark blue background */
+  color: var(--text-light);  /* Light text for contrast */
   padding: 1.5rem;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -36,20 +35,21 @@ header h1 {
 }
 
 header .highlight {
-  color: var(--accent-color);
+  color: var(--text-light);
 }
 
+/* Enhance nav with clear focus states */
 nav {
   display: flex;
   justify-content: center;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color);  /* Lighter accent color for contrast */
   padding: 0.8rem;
   gap: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 nav a {
-  color: var(--text-light);
+  color: var(--text-light); /* Light text for visibility */
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
@@ -60,9 +60,15 @@ nav a {
 nav a:hover,
 nav a:focus,
 nav a:active {
-  background-color: var(--button-hover-color);
+  background-color: var(--button-hover-color); /* Lighter button hover effect */
   color: #fff;
   transform: scale(1.05);
+}
+
+/* Add focus styles for better accessibility */
+nav a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
 }
 
 main {
@@ -106,33 +112,69 @@ main {
   margin-bottom: 0.5rem;
 }
 
+/* Apply subtle text shadow for better readability */
 .text h2::before {
   content: '\f013'; /* Font Awesome Gear icon (⚙️) */
   font-family: 'Font Awesome 5 Free'; /* Using Font Awesome */
   margin-right: 10px;
   font-size: 1.5rem;
-  font-weight: 900; /* Make the icon bold */
+  font-weight: 900; /* Bold icon */
+}
+
+.flag-description {
+  margin: 2rem 0 4rem; /* Top: 2rem, Bottom: 4rem for more space */
+  padding: 1.5rem;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.flag-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .flag-container {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
+  text-align: center;
+  max-width: 250px;
 }
 
-.flag-container img {
-  width: 40px;
-  margin-right: 0.5rem;
+.nigeria-flag {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #008753;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.flag-container p {
-  font-size: 1.1rem;
-  font-weight: 500;
+.location-label {
+  font-weight: 600;
+  color: #222;
+  margin-top: 0.5rem;
 }
+
+.flag-caption {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.2rem;
+}
+
+.description {
+  max-width: 600px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify; /* <- Justifies the text */
+}
+
 
 .web-dev-resources {
-  background-color: var(--primary-color);
-  color: var(--text-dark);
+  background-color: var(--accent-color);  /* Accent color background for contrast */
+  color: var(--text-light);  /* Light text for readability */
   padding: 2rem;
   border-radius: var(--border-radius);
   margin-top: 2rem;
@@ -143,6 +185,7 @@ main {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: bold;
+  color: var(--text-light); /* Ensure title is light-colored for readability */
 }
 
 .web-dev-resources ul {
@@ -155,19 +198,19 @@ main {
 }
 
 .web-dev-resources a {
-  color: var(--accent-color);
+  color: var(--text-light); /* Light text for links */
   text-decoration: none;
   font-weight: 500;
 }
 
 .web-dev-resources a:hover {
   text-decoration: underline;
-  color: #4fc3f7;
+  color: #4fc3f7;  /* Light blue for hover */
 }
 
 footer {
-  background-color: var(--primary-color);
-  color: var(--text-light);
+  background-color: var(--primary-color);  /* Dark primary color for footer */
+  color: var(--text-light);  /* Light text */
   text-align: center;
   padding: 1.5rem;
   border-top: 2px solid #ffffff;
@@ -199,7 +242,7 @@ button.back-to-top {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color);  /* Lighter color for the back-to-top button */
   color: var(--text-light);
   border: none;
   border-radius: 50%;
@@ -244,6 +287,7 @@ button.back-to-top:hover {
     gap: 1rem;
   }
 }
+
 .text .quote {
   font-size: 1.1rem;
   font-style: italic;
@@ -251,4 +295,17 @@ button.back-to-top:hover {
   margin-top: 0.5rem;
   text-align: center;
   font-weight: 500;
+}
+.highlight {
+  color: #441717;                   /* Soft, near-white color */
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
+  font-weight: 500;
+  font-size: 1.3em;
+  text-shadow: none;
+}
+.highlight {
+  font-family: 'Great Vibes', cursive;
+  color: #2c3e50; /* Professional dark slate blue */
+  font-size: 2rem;
+  letter-spacing: 0.5px;
 }
