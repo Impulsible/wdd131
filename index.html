@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +5,23 @@
   <meta name="author" content="Osuagwu Prince Henry">
   <title>WDD 131: Dynamic Web Fundamentals - Osuagwu Prince Henry</title>
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <!-- Google Fonts preconnect (correct order and attributes) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
- 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts links -->
   <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  <!-- Link to Font Awesome CDN -->
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-   <link rel="stylesheet" href="styles/base.css">
+
+  <!-- Base CSS -->
+  <link rel="stylesheet" href="styles/base.css">
 </head>
-<body>
+
   <header>
     <h1>WDD 131: Dynamic Web Fundamentals - <span class="highlight">Osuagwu Prince Henry</span></h1>
     <nav>
@@ -76,13 +79,18 @@
     <p>💻 Osuagwu Prince Henry 💻 | Technology Enthusiast | Nigeria &copy; 2025</p>
     <p id="lastModified"></p>
     <div class="social-icons">
-      <a href="https://www.linkedin.com" target="_blank" class="bright-link"><img src="images/download (1).png" alt="LinkedIn"></a>
+      <a href="https://www.linkedin.com" target="_blank" class="bright-link"><img src="images/link1.png" alt="LinkedIn"></a>
       <a href="https://github.com" target="_blank" class="bright-link"><img src="images/download.png" alt="GitHub"></a>
       <a href="https://twitter.com"><img src="images/x-pictogram_764382-13928.avif" alt="Twitter"></a>
+         <p id="lastModified"></p>
     </div>
   </footer>
 
-  <button class="back-to-top" onclick="scrollToTop();">↑</button>
+<button id="back-to-top" title="Go to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+
   <script src="scripts/getdate.js" defer></script>
 </body>
 </html>
