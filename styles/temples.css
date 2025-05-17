@@ -234,18 +234,7 @@ footer p {
     padding: 1rem 0.5rem;
   }
 }
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: #004080;
-  color: white;
-  padding: 8px;
-  z-index: 100;
-}
-.skip-link:focus {
-  top: 0;
-}
+
 body {
   background-color: #f0f0f0; /* light grey background */
   color: #222831; /* dark text for contrast */
@@ -319,4 +308,37 @@ nav#nav-menu a:focus {
     padding: 1rem;
     border-top: 1px solid #0059b3;
   }
+}
+    /* Optional smooth scroll for skip-link */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      left: 0;
+      top: 0;
+      width: auto;
+      height: auto;
+      padding: 1rem;
+      background: #000;
+      color: #fff;
+    }
+
+    figcaption {
+      color: white; /* Ensure white text on images */
+    }
+.main-heading {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: rgb(12, 12, 12); /* Optional: if needed for visibility on dark background */
 }
