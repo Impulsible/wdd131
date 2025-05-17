@@ -106,14 +106,11 @@ figure:hover img {
 figcaption {
   padding: 1rem;
   text-align: center;
-  background-color: #2a435c; /* slight blue tint for softness */
+  background-color: #2a435c;
   font-style: italic;
-  color: rgb(11, 10, 10); /* Added this line */
+  color: var(--color-muted); /* <- Choose this or rgb(11, 10, 10) */
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  figcaption {
-  color: var(--color-muted);
-}
 }
 
 
