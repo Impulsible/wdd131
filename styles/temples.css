@@ -1,0 +1,346 @@
+/* temples.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;600&display=swap');
+:root {
+  --color-bg: #f4f4f4;
+  --color-text: #1a1a1a;
+  --color-accent: #2b6cb0;
+  --color-muted: #333333;
+  --color-highlight: #d97706;
+  --color-footer-bg: #1e293b;
+  --color-footer-text: #ffffff;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+
+header {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+}
+
+#hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+nav {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: var(--color-primary-light);
+}
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+figure {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  box-shadow: 0 8px 20px rgba(0, 64, 128, 0.15); /* soft blue shadow */
+  border-radius: 20px; /* larger rounded corners */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+figure:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 64, 128, 0.3); /* stronger shadow on hover */
+}
+
+figure img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: none; /* remove bottom border for smooth edge */
+  display: block;
+  border-top-left-radius: 20px;  /* round image top corners */
+  border-top-right-radius: 20px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* subtle shadow */
+  transition: filter 0.3s ease;
+}
+
+figure:hover img {
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
+}
+
+figcaption {
+  padding: 1rem;
+  text-align: center;
+  background-color: #2a435c; /* slight blue tint for softness */
+  font-style: italic;
+  color: rgb(11, 10, 10); /* Added this line */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  figcaption {
+  color: var(--color-muted);
+}
+}
+
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #004080;
+  color: white;
+  margin-top: 2rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+footer p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.temple-icon {
+  font-size: 1.2rem;
+}
+
+
+.fade-transition {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-transition.show {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+:focus {
+  outline: 2px solid #004080;
+  outline-offset: 2px;
+}
+
+a:focus, button:focus {
+  outline: 2px dashed #ffcc00;
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media print {
+  nav, header, footer {
+    display: none;
+  }
+
+  main {
+    margin: 0;
+    padding: 0;
+  }
+}
+footer {
+  background-color: #004080;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.95rem;
+  flex-wrap: wrap;
+}
+
+footer p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.temple-icon {
+  font-size: 1.2rem;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  footer {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+
+  footer p {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.25rem;
+  }
+}
+
+
+@media (max-width: 600px) {
+  footer {
+    font-size: 0.8rem;
+    padding: 1rem 0.5rem;
+  }
+}
+
+body {
+  background-color: #f0f0f0; /* light grey background */
+  color: #222831; /* dark text for contrast */
+}
+
+figure {
+  background-color: white; /* cards remain white to stand out */
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+header {
+  background-color: #004080;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+#hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none; /* hidden by default */
+}
+
+nav#nav-menu {
+  display: flex;
+  gap: 1rem;
+}
+
+nav#nav-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav#nav-menu a:hover,
+nav#nav-menu a:focus {
+  background-color: #0066cc;
+  outline: none;
+}
+
+/* Responsive: hamburger and nav toggle */
+@media (max-width: 600px) {
+  #hamburger {
+    display: block;
+  }
+
+  nav#nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #004080;
+    position: absolute;
+    top: 60px; /* below header */
+    left: 0;
+    z-index: 10;
+  }
+
+  nav#nav-menu.active {
+    display: flex;
+  }
+
+  nav#nav-menu a {
+    padding: 1rem;
+    border-top: 1px solid #0059b3;
+  }
+}
+    /* Optional smooth scroll for skip-link */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      left: 0;
+      top: 0;
+      width: auto;
+      height: auto;
+      padding: 1rem;
+      background: #000;
+      color: #fff;
+    }
+
+    figcaption {
+      color: white; /* Ensure white text on images */
+    }
+.main-heading {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: rgb(12, 12, 12); /* Optional: if needed for visibility on dark background */
+}
