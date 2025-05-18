@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maldives</title>
+  <link rel="stylesheet" href="styles/place.css" />
+  <script src="scripts/place.js" defer></script>
+</head>
+<body>
+    
+  <header class="header">
+    <h1>Maldives Island</h1>
+  </header>
+
+  <section class="hero">
+    <picture>
+      <source srcset="images/maldives.webp" media="(min-width: 768px)">
+      <img src="images/snorkeling.webp" alt="Marine life of Maldives">
+    </picture>
+
+    <div class="overlay"></div>
+
+    <div class="content-overlay">
+      <section class="data-card">
+        <h2>Data</h2>
+        <p><strong>Area:</strong> 298 sq km</p>
+        <p><strong>Population:</strong> 521,021</p>
+        <p><strong>Capital:</strong> Malé</p>
+        <p><strong>Languages:</strong> Dhivehi, English</p>
+        <p><strong>Currency:</strong> Maldivian Rufiyaa</p>
+        <p><strong>Time Zone:</strong> UTC+5</p>
+        <p><strong>Calling Code:</strong> +960</p>
+        <p><strong>Internet TLD:</strong> .mv</p>
+      </section>
+
+      <section class="weather-card">
+        <h2>Weather</h2>
+        <img class="weather-icon-mobile" src="images/weather.svg" alt="Weather icon"/>
+        <p><strong>Temperature:</strong> <span id="temp">29</span>°C</p>
+        <p><strong>Conditions:</strong> Sunny</p>
+        <p><strong>Wind:</strong> <span id="wind">10</span> km/h</p>
+        <p><strong>Wind Chill:</strong> <span id="chill">--</span> °C</p>
+      </section>
+    </div>
+  </section>
+
+  <footer>
+    <p>©<span id="year"></span> 🌴 Henry Osuagwu 🌴 Maldives Island</p>
+    <p>Last Modification: <span id="lastModified"></span></p>
+  </footer>
+</body>
+</html>
