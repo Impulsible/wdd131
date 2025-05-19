@@ -16,24 +16,22 @@
   <script src="scripts/place.js" defer></script>
 </head>
 <body>
-  
   <header class="header">
     <h1>Maldives Island</h1>
   </header>
 
   <main>
-    <!-- Hero with overwater background and floating cards (desktop) -->
+    <!-- Hero image -->
     <section class="hero">
       <picture>
         <source srcset="images/maldives.webp" media="(min-width: 768px)">
-        <img src="images/snorkeling.webp" alt="Marine life of Maldives">
+        <img src="images/marina.webp" alt="Marine life of Maldives">
       </picture>
-
       <div class="overlay"></div>
 
+      <!-- Desktop only cards -->
       <div class="content-overlay">
-        <!-- Cards positioned absolutely on desktop -->
-        <section class="data-card">
+        <section class="data-card desktop-only">
           <h2>Data</h2>
           <p><strong>Area:</strong> 298 sq km</p>
           <p><strong>Population:</strong> 521,021</p>
@@ -45,9 +43,8 @@
           <p><strong>Internet TLD:</strong> .mv</p>
         </section>
 
-        <section class="weather-card">
+        <section class="weather-card desktop-only">
           <h2>Weather</h2>
-          <img class="weather-icon-mobile" src="images/weather.svg" alt="Weather icon" width="40" height="40">
           <p><strong>Temperature:</strong> <span id="temp">29</span>°C</p>
           <p><strong>Conditions:</strong> Sunny</p>
           <p><strong>Wind:</strong> <span id="wind">10</span> km/h</p>
@@ -56,8 +53,8 @@
       </div>
     </section>
 
-    <!-- Cards stacked vertically below hero (mobile) -->
-    <section class="card-section">
+    <!-- Mobile stacked cards -->
+    <section class="card-section mobile-only">
       <div class="data-card">
         <h2>Data</h2>
         <p><strong>Area:</strong> 298 sq km</p>
