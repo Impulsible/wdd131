@@ -59,11 +59,11 @@ header {
 
 @media (max-width: 767px) {
   .hero {
-    height: 90vh;
+    height: 65vh;
   }
 
   .hero img {
-    object-position: center 60%;
+    object-position: center 50%;
   }
 }
 
