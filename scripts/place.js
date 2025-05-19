@@ -1,19 +1,21 @@
-function calculateWindChill(tempC, windKmh) {
-  return (tempC <= 10 && windKmh > 4.8)
-    ? Math.round((13.12 + 0.6215 * tempC - 11.37 * Math.pow(windKmh, 0.16) + 0.3965 * tempC * Math.pow(windKmh, 0.16)) * 10) / 10
-    : "N/A";
-}
+// One-line wind chill function
+const calculateWindChill = (t, v) => (t <= 10 && v > 4.8) 
+  ? Math.round((13.12 + 0.6215 * t - 11.37 * v**0.16 + 0.3965 * t * v**0.16) * 10) / 10 
+  : "N/A";
 
+// Set current year
 const yearSpan = document.getElementById("year");
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
+// Set last modified date
 const lastModifiedSpan = document.getElementById("lastModified");
 if (lastModifiedSpan) {
   lastModifiedSpan.textContent = document.lastModified;
 }
 
+// Calculate wind chill if conditions are met
 const tempElem = document.getElementById("temp");
 const windElem = document.getElementById("wind");
 const chillElem = document.getElementById("chill");
@@ -21,15 +23,13 @@ const chillElem = document.getElementById("chill");
 if (tempElem && windElem && chillElem) {
   const temp = parseFloat(tempElem.textContent);
   const wind = parseFloat(windElem.textContent);
-  if (!isNaN(temp) && !isNaN(wind)) {
-    chillElem.textContent = calculateWindChill(temp, wind);
-  } else {
-    chillElem.textContent = "N/A";
-  }
+  chillElem.textContent = (!isNaN(temp) && !isNaN(wind) && temp <= 10 && wind > 4.8) 
+    ? calculateWindChill(temp, wind) 
+    : "N/A";
 }
 
+// Add moon logo and wrap heading
 const header = document.querySelector("header");
-
 if (header) {
   const wrapper = document.createElement("div");
   wrapper.classList.add("header-content");
@@ -51,6 +51,7 @@ if (header) {
   }
 }
 
+// Inject Google Font and style
 document.head.insertAdjacentHTML("beforeend", `
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <style>
