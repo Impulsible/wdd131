@@ -23,9 +23,10 @@ const chillElem = document.getElementById("chill");
 if (tempElem && windElem && chillElem) {
   const temp = parseFloat(tempElem.textContent);
   const wind = parseFloat(windElem.textContent);
-  chillElem.textContent = (!isNaN(temp) && !isNaN(wind) && temp <= 10 && wind > 4.8) 
-    ? calculateWindChill(temp, wind) 
+  const chill = (!isNaN(temp) && !isNaN(wind) && temp <= 10 && wind > 4.8)
+    ? `${calculateWindChill(temp, wind)}°C`
     : "N/A";
+  chillElem.textContent = chill;
 }
 
 // Add moon logo and wrap heading
