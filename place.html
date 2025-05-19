@@ -10,8 +10,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Google Fonts embed link - place in head -->
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles/place.css">
@@ -19,13 +17,12 @@
 </head>
 <body>
   
-  <!-- Place header inside body and before main -->
   <header class="header">
     <h1>Maldives Island</h1>
   </header>
 
-  <!-- Add main element wrapping your main page content -->
   <main>
+    <!-- Hero with overwater background and floating cards (desktop) -->
     <section class="hero">
       <picture>
         <source srcset="images/maldives.webp" media="(min-width: 768px)">
@@ -35,6 +32,7 @@
       <div class="overlay"></div>
 
       <div class="content-overlay">
+        <!-- Cards positioned absolutely on desktop -->
         <section class="data-card">
           <h2>Data</h2>
           <p><strong>Area:</strong> 298 sq km</p>
@@ -55,6 +53,30 @@
           <p><strong>Wind:</strong> <span id="wind">10</span> km/h</p>
           <p><strong>Wind Chill:</strong> <span id="chill">--</span> °C</p>
         </section>
+      </div>
+    </section>
+
+    <!-- Cards stacked vertically below hero (mobile) -->
+    <section class="card-section">
+      <div class="data-card">
+        <h2>Data</h2>
+        <p><strong>Area:</strong> 298 sq km</p>
+        <p><strong>Population:</strong> 521,021</p>
+        <p><strong>Capital:</strong> Malé</p>
+        <p><strong>Languages:</strong> Dhivehi, English</p>
+        <p><strong>Currency:</strong> Maldivian Rufiyaa</p>
+        <p><strong>Time Zone:</strong> UTC+5</p>
+        <p><strong>Calling Code:</strong> +960</p>
+        <p><strong>Internet TLD:</strong> .mv</p>
+      </div>
+
+      <div class="weather-card">
+        <h2>Weather</h2>
+        <img class="weather-icon-mobile" src="images/weather.svg" alt="Weather icon" width="40" height="40">
+        <p><strong>Temperature:</strong> <span id="temp">29</span>°C</p>
+        <p><strong>Conditions:</strong> Sunny</p>
+        <p><strong>Wind:</strong> <span id="wind">10</span> km/h</p>
+        <p><strong>Wind Chill:</strong> <span id="chill">--</span> °C</p>
       </div>
     </section>
   </main>
