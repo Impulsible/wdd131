@@ -1,7 +1,8 @@
 // One-line wind chill function
-const calculateWindChill = (t, v) => (t <= 10 && v > 4.8) 
-  ? Math.round((13.12 + 0.6215 * t - 11.37 * v**0.16 + 0.3965 * t * v**0.16) * 10) / 10 
-  : "N/A";
+const calculateWindChill = (t, v) =>
+  (t <= 10 && v > 4.8)
+    ? Math.round((13.12 + 0.6215 * t - 11.37 * v**0.16 + 0.3965 * t * v**0.16) * 10) / 10
+    : "N/A";
 
 // Set current year
 const yearSpan = document.getElementById("year");
@@ -15,19 +16,22 @@ if (lastModifiedSpan) {
   lastModifiedSpan.textContent = document.lastModified;
 }
 
-// Calculate wind chill if conditions are met
-const tempElem = document.getElementById("temp");
-const windElem = document.getElementById("wind");
-const chillElem = document.getElementById("chill");
+// Calculate wind chill for both desktop and mobile
+function updateWindChill(tempId, windId, chillId) {
+  const tempElem = document.getElementById(tempId);
+  const windElem = document.getElementById(windId);
+  const chillElem = document.getElementById(chillId);
 
-if (tempElem && windElem && chillElem) {
-  const temp = parseFloat(tempElem.textContent);
-  const wind = parseFloat(windElem.textContent);
-  const chill = (!isNaN(temp) && !isNaN(wind) && temp <= 10 && wind > 4.8)
-    ? `${calculateWindChill(temp, wind)}°C`
-    : "N/A";
-  chillElem.textContent = chill;
+  if (tempElem && windElem && chillElem) {
+    const temp = parseFloat(tempElem.textContent);
+    const wind = parseFloat(windElem.textContent);
+    const chill = calculateWindChill(temp, wind);
+    chillElem.textContent = (chill !== "N/A") ? `${chill}°C` : "N/A";
+  }
 }
+
+updateWindChill("temp-desktop", "wind-desktop", "chill-desktop");
+updateWindChill("temp-mobile", "wind-mobile", "chill-mobile");
 
 // Add moon logo and wrap heading
 const header = document.querySelector("header");
