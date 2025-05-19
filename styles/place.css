@@ -59,7 +59,7 @@ header {
 
 @media (max-width: 767px) {
   .hero {
-    height: 65vh;
+    height: 70vh;
   }
 
   .hero img {
@@ -216,5 +216,16 @@ footer {
 @media (min-width: 768px) {
   .mobile-only {
     display: none;
+  }
+}
+@media (max-width: 767px) {
+  .hero {
+    height: 65vh; /* slightly less than full screen to avoid image being too close */
+  }
+
+  .hero img {
+    object-fit: cover;         /* Keeps image ratio */
+    object-position: center 50%; /* Adjusts vertical focus */
+    transform: scale(1.05);    /* Slight zoom-in for a better visual fill */
   }
 }
