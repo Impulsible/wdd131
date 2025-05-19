@@ -45,7 +45,7 @@ header {
 .hero {
   position: relative;
   width: 100%;
-  height: 90vh; /* Slightly less than full screen */
+  height: 70vh; /* Slightly less than full screen */
   overflow: hidden;
 }
 
