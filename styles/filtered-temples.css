@@ -416,10 +416,16 @@ html {
   display: none; /* hidden on desktop */
 }
 
-/* Show hamburger on mobile */
 @media (max-width: 600px) {
-  #hamburger {
-    display: block;
+  nav#nav-menu {
+    display: none;
+    flex-direction: column;
+    /* other styles */
+  }
+  nav#nav-menu.active {
+    display: flex;
+    max-height: 300px;
   }
 }
+
 
