@@ -641,3 +641,55 @@ nav a:hover {
   white-space: nowrap;
 }
 
+/* MOBILE FIRST */
+#hamburger {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+#nav-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  flex-direction: column;
+  background-color: #004080;
+}
+
+#nav-menu.open {
+  max-height: 300px; /* Enough to show all buttons */
+}
+
+#nav-menu button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: left;
+}
+
+/* DESKTOP VIEW */
+@media (min-width: 768px) {
+  #hamburger {
+    display: none; /* Hide hamburger */
+  }
+
+  #nav-menu {
+    display: flex !important;
+    max-height: none;
+    overflow: visible;
+    flex-direction: row;
+    gap: 1rem;
+    background: none;
+  }
+
+  #nav-menu button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
+  }
+}
+
