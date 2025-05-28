@@ -219,7 +219,7 @@ const temples = [
 document.addEventListener("DOMContentLoaded", () => {
   const templesContainer = document.getElementById("templesContainer");
   const hamburger = document.getElementById("hamburger");
-  const hiddenLinks = document.querySelector(".visually-hidden-links");
+  const navMenu = document.getElementById("nav-menu");
 
   function renderTemples(list) {
     templesContainer.innerHTML = "";
@@ -243,7 +243,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function filterTemples(filter) {
     templesContainer.classList.remove("small-full-image", "old-full-image", "large-full-image");
-
     let filtered = [];
     switch (filter) {
       case "old":
@@ -270,42 +269,37 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function closeMenu() {
-    hiddenLinks.classList.remove("show");
+    navMenu.classList.remove("show");
     hamburger.classList.remove("open");
     hamburger.setAttribute("aria-expanded", "false");
+    navMenu.setAttribute("aria-hidden", "true");
     hamburger.textContent = "☰";
   }
 
-  // Toggle menu on hamburger click
+  // Toggle hamburger menu
   hamburger.addEventListener("click", () => {
     const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
     hamburger.setAttribute("aria-expanded", !isExpanded);
-    hiddenLinks.classList.toggle("show");
+    navMenu.setAttribute("aria-hidden", isExpanded);
+
+    navMenu.classList.toggle("show");
     hamburger.classList.toggle("open");
     hamburger.textContent = isExpanded ? "☰" : "✖";
   });
 
-  // Close menu on nav link click (mobile)
-  const navLinks = hiddenLinks.querySelectorAll("a");
+  // Handle click on nav links (for mobile filtering)
+  const navLinks = navMenu.querySelectorAll("a");
   navLinks.forEach(link => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default anchor navigation
+      const filterId = link.getAttribute("id");
+      const filteredTemples = filterTemples(filterId);
+      renderTemples(filteredTemples);
       if (window.innerWidth < 768) {
         hamburger.focus();
         closeMenu();
       }
     });
-  });
-
-  // Filter buttons
-  ["home", "old", "new", "large", "small"].forEach((id) => {
-    const btn = document.getElementById(id);
-    if (btn) {
-      btn.addEventListener("click", () => {
-        const filteredTemples = filterTemples(id);
-        renderTemples(filteredTemples);
-        closeMenu();
-      });
-    }
   });
 
   // Initial render and footer info
