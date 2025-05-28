@@ -1,9 +1,4 @@
 /* temples.css */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Merriweather:wght@400;700&display=swap');
-
-
-
 :root {
   --color-bg: #f4f4f4;
   --color-text: #1a1a1a;
@@ -534,7 +529,7 @@ nav a:hover {
 /* Small filter: uniform square images, all same size */
 #templesContainer.small-full-image .temple-card {
   max-width: 300px !important;
-  width: 300px !important;
+  width: 400px !important;
   padding: 0;
   margin: 1rem auto;
   display: flex;
