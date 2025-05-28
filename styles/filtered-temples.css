@@ -1,5 +1,5 @@
 /* temples.css */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Playfair+Display:wght@400;700&family=Raleway:wght@400;600&display=swap');
+
 :root {
   --color-bg: #f4f4f4;
   --color-text: #1a1a1a;
@@ -351,32 +351,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  z-index: 100;
-}
-
-.skip-link:focus {
-  left: 0;
-  top: 0;
-  width: auto;
-  height: auto;
-  padding: 1rem;
-  background: #000;
-  color: #fff;
-}
-
-.main-heading {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  color: rgb(12, 12, 12);
-}
-
 .visually-hidden-links {
   position: absolute;
   left: -9999px;
@@ -388,38 +362,47 @@ html {
   color: transparent;
   background: none;
   pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
-@media (max-width: 600px) {
-  .visually-hidden-links {
-    position: static;
-    width: auto;
-    height: auto;
-    overflow: visible;
-    white-space: normal;
-    color: inherit;
-    background: transparent;
-    pointer-events: auto;
-    display: block;
-    padding: 0.5rem;
-  }
-
-  .visually-hidden-links a {
-    display: block;
-    color: white;
-    background: #004080;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    margin-bottom: 0.25rem;
-    text-decoration: none;
-  }
-
-  .visually-hidden-links a:hover {
-    background: #0059b3;
-  }
+/* Show the menu only when toggled */
+.visually-hidden-links.show {
+  position: absolute;
+  top: 3.5rem;    /* below hamburger */
+  right: 1rem;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  white-space: normal;
+  color: white;
+  background-color: #004080;
+  padding: 1rem;
+  border-radius: 8px;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* HAMBURGER BUTTON */
+/* Style the links inside */
+.visually-hidden-links a {
+  display: block;
+  color: white;
+  background: #004080;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+  text-decoration: none;
+  text-align: right;
+  cursor: pointer;
+}
+
+.visually-hidden-links a:hover {
+  background: #0059b3;
+}
+
+/* Hide hamburger on desktop */
 #hamburger {
   font-size: 2rem;
   background: none;
@@ -433,45 +416,10 @@ html {
   display: none; /* hidden on desktop */
 }
 
-/* DROPDOWN MENU STYLING */
-#nav-menu {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 3.5rem;
-  right: 1rem;
-  background-color: #004080;
-  border-radius: 8px;
-  padding: 1rem;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-}
-
-#nav-menu.show {
-  display: flex;
-}
-
-#nav-menu button {
-  background: none;
-  border: none;
-  color: white;
-  padding: 0.5rem 1rem;
-  text-align: right;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-#nav-menu button:hover,
-#nav-menu button:focus {
-  background-color: #0059b3;
-  border-radius: 4px;
-  outline: none;
-}
-
-/* MOBILE ONLY */
+/* Show hamburger on mobile */
 @media (max-width: 600px) {
   #hamburger {
     display: block;
   }
 }
+
