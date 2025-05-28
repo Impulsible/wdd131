@@ -219,7 +219,7 @@ const temples = [
 document.addEventListener("DOMContentLoaded", () => {
   const templesContainer = document.getElementById("templesContainer");
   const hamburger = document.getElementById("hamburger");
-  const navMenu = document.getElementById("nav-menu");
+  const hiddenLinks = document.querySelector(".visually-hidden-links");
 
   function renderTemples(list) {
     templesContainer.innerHTML = "";
@@ -270,10 +270,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function closeMenu() {
-    navMenu.classList.remove("show");
+    hiddenLinks.classList.remove("show");
     hamburger.classList.remove("open");
     hamburger.setAttribute("aria-expanded", "false");
-    navMenu.setAttribute("aria-hidden", "true");
     hamburger.textContent = "☰";
   }
 
@@ -281,21 +280,17 @@ document.addEventListener("DOMContentLoaded", () => {
   hamburger.addEventListener("click", () => {
     const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
     hamburger.setAttribute("aria-expanded", !isExpanded);
-    navMenu.setAttribute("aria-hidden", isExpanded);
-
-    navMenu.classList.toggle("show");
+    hiddenLinks.classList.toggle("show");
     hamburger.classList.toggle("open");
-
-    // Change icon
     hamburger.textContent = isExpanded ? "☰" : "✖";
   });
 
-  // Close menu on nav item click (mobile)
-  const navLinks = navMenu.querySelectorAll("a");
+  // Close menu on nav link click (mobile)
+  const navLinks = hiddenLinks.querySelectorAll("a");
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
       if (window.innerWidth < 768) {
-        hamburger.focus(); // Move focus back to hamburger before hiding
+        hamburger.focus();
         closeMenu();
       }
     });
