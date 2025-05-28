@@ -269,31 +269,31 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  function closeMenu() {
-    navMenu.classList.remove("open");
-    hamburger.setAttribute("aria-expanded", "false");
-    navMenu.setAttribute("aria-hidden", "true");
-  }
-
-  function openMenu() {
-    navMenu.classList.add("open");
-    hamburger.setAttribute("aria-expanded", "true");
-    navMenu.setAttribute("aria-hidden", "false");
-  }
-
   // Toggle menu on hamburger click
-  hamburger.addEventListener("click", (e) => {
-    const isOpen = navMenu.classList.toggle("open");
-    hamburger.setAttribute("aria-expanded", isOpen);
-    navMenu.setAttribute("aria-hidden", !isOpen);
-    e.stopPropagation(); // Prevent it from triggering the outside click
+  hamburger.addEventListener("click", () => {
+    const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
+    hamburger.setAttribute("aria-expanded", !isExpanded);
+    navMenu.setAttribute("aria-hidden", isExpanded);
+
+    navMenu.classList.toggle("show");
+    hamburger.classList.toggle("open");
+
+    // Change icon if desired
+    hamburger.textContent = isExpanded ? "☰" : "✖";
   });
 
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-      closeMenu();
-    }
+  // Close menu on nav item click (mobile)
+  const navButtons = navMenu.querySelectorAll("button");
+  navButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      if (window.innerWidth < 768) {
+        navMenu.classList.remove("show");
+        hamburger.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        navMenu.setAttribute("aria-hidden", "true");
+        hamburger.textContent = "☰";
+      }
+    });
   });
 
   // Filter buttons
@@ -303,12 +303,11 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", () => {
         const filteredTemples = filterTemples(id);
         renderTemples(filteredTemples);
-        closeMenu();
       });
     }
   });
 
-  // Initial render and footer info
+  // Initial render and footer
   renderTemples(temples);
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("lastModified").textContent = document.lastModified;
