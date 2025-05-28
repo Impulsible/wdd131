@@ -243,6 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function filterTemples(filter) {
     templesContainer.classList.remove("small-full-image", "old-full-image", "large-full-image");
+
     let filtered = [];
     switch (filter) {
       case "old":
@@ -268,41 +269,47 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  function closeMenu() {
-    navMenu.classList.remove("show");
-    hamburger.classList.remove("open");
-    hamburger.setAttribute("aria-expanded", "false");
-    navMenu.setAttribute("aria-hidden", "true");
-    hamburger.textContent = "☰";
-  }
+  // Toggle menu on hamburger click
+hamburger.addEventListener("click", () => {
+  const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
+  hamburger.setAttribute("aria-expanded", !isExpanded);
+  navMenu.setAttribute("aria-hidden", isExpanded);
 
-  // Toggle hamburger menu
-  hamburger.addEventListener("click", () => {
-    const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
-    hamburger.setAttribute("aria-expanded", !isExpanded);
-    navMenu.setAttribute("aria-hidden", isExpanded);
+  navMenu.classList.toggle("show");
+  hamburger.classList.toggle("open");
 
-    navMenu.classList.toggle("show");
-    hamburger.classList.toggle("open");
-    hamburger.textContent = isExpanded ? "☰" : "✖";
+  // Change icon if desired
+  hamburger.textContent = isExpanded ? "☰" : "✖";
+});
+
+// Close menu on nav item click (mobile)
+const navButtons = navMenu.querySelectorAll("button");
+navButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    if (window.innerWidth < 768) {
+      hamburger.focus(); // ✅ Move focus away before hiding
+      navMenu.classList.remove("show");
+      hamburger.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+      navMenu.setAttribute("aria-hidden", "true");
+      hamburger.textContent = "☰";
+    }
   });
+});
 
-  // Handle click on nav links (for mobile filtering)
-  const navLinks = navMenu.querySelectorAll("a");
-  navLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault(); // Prevent default anchor navigation
-      const filterId = link.getAttribute("id");
-      const filteredTemples = filterTemples(filterId);
+// Filter buttons
+["home", "old", "new", "large", "small"].forEach((id) => {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const filteredTemples = filterTemples(id);
       renderTemples(filteredTemples);
-      if (window.innerWidth < 768) {
-        hamburger.focus();
-        closeMenu();
-      }
     });
-  });
+  }
+});
 
-  // Initial render and footer info
+
+  // Initial render and footer
   renderTemples(temples);
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("lastModified").textContent = document.lastModified;
