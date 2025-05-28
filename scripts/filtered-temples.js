@@ -79,13 +79,13 @@ const temples = [
     area: 37000,
     imageUrl: "https://www.churchofjesuschrist.org/imgs/08d5a9e90a0c8347a61d17335775c5e118b33a9a/full/1600%2C/0/default"
   },
-  {
-    templeName: "Tokyo Japan",
-    location: "Tokyo, Japan",
-    dedicated: "1980, October, 27",
-    area: 53170,
-    imageUrl: "https://www.churchofjesuschrist.org/imgs/f36ff27e1c9f11ecac0eeeeeac1e10ba7fe5b940/full/1600%2C/0/default"
-  },
+ {
+  templeName: "Cleveland Ohio Temple",
+  location: "Cleveland, Ohio, USA",
+  dedicated: "2022, May, 22",
+  area: 90000,  // approx. 90,000 sq ft (official sources mention roughly this size)
+  imageUrl: "https://www.churchofjesuschrist.org/imgs/b8f186ba13a611efbe75eeeeac1ec2585957b8be/full/500%2C/0/default"
+},
   {
     templeName: "Freiberg Germany Temple",
     location: "Freiberg, Germany",
