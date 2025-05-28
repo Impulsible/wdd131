@@ -270,42 +270,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Toggle menu on hamburger click
-  hamburger.addEventListener("click", () => {
-    const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
-    hamburger.setAttribute("aria-expanded", !isExpanded);
-    navMenu.setAttribute("aria-hidden", isExpanded);
+hamburger.addEventListener("click", () => {
+  const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
+  hamburger.setAttribute("aria-expanded", !isExpanded);
+  navMenu.setAttribute("aria-hidden", isExpanded);
 
-    navMenu.classList.toggle("show");
-    hamburger.classList.toggle("open");
+  navMenu.classList.toggle("show");
+  hamburger.classList.toggle("open");
 
-    // Change icon if desired
-    hamburger.textContent = isExpanded ? "☰" : "✖";
-  });
+  // Change icon if desired
+  hamburger.textContent = isExpanded ? "☰" : "✖";
+});
 
-  // Close menu on nav item click (mobile)
-  const navButtons = navMenu.querySelectorAll("button");
-  navButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      if (window.innerWidth < 768) {
-        navMenu.classList.remove("show");
-        hamburger.classList.remove("open");
-        hamburger.setAttribute("aria-expanded", "false");
-        navMenu.setAttribute("aria-hidden", "true");
-        hamburger.textContent = "☰";
-      }
-    });
-  });
-
-  // Filter buttons
-  ["home", "old", "new", "large", "small"].forEach((id) => {
-    const btn = document.getElementById(id);
-    if (btn) {
-      btn.addEventListener("click", () => {
-        const filteredTemples = filterTemples(id);
-        renderTemples(filteredTemples);
-      });
+// Close menu on nav item click (mobile)
+const navButtons = navMenu.querySelectorAll("button");
+navButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    if (window.innerWidth < 768) {
+      hamburger.focus(); // ✅ Move focus away before hiding
+      navMenu.classList.remove("show");
+      hamburger.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+      navMenu.setAttribute("aria-hidden", "true");
+      hamburger.textContent = "☰";
     }
   });
+});
+
+// Filter buttons
+["home", "old", "new", "large", "small"].forEach((id) => {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const filteredTemples = filterTemples(id);
+      renderTemples(filteredTemples);
+    });
+  }
+});
+
 
   // Initial render and footer
   renderTemples(temples);
