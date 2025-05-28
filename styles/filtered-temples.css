@@ -27,10 +27,10 @@ header {
   position: relative;
 }
 
-header h1 {
-  font-family: 'Lora', serif;
-  margin: 0;
+h1, h2, h3, .main-heading, header h1 {
+  font-family: 'Playfair Display', serif;
 }
+
 
 #hamburger {
   font-size: 1.5rem;
@@ -630,3 +630,14 @@ nav a:hover {
     padding: 1rem 0;
   }
 }
+
+.visually-hidden-links {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
