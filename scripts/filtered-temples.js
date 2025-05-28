@@ -216,53 +216,46 @@ const temples = [
 ];
 
 
-// Helper function to get year from dedicated date string
-function getYearFromDate(dateStr) {
-  return parseInt(dateStr.split(",")[0].trim());
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const templesContainer = document.getElementById("templesContainer");
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
 
- function renderTemples(list) {
-  templesContainer.innerHTML = ""; // Clear previous
-  if (list.length === 0) {
-    templesContainer.innerHTML = "<p>No temples found for this filter.</p>";
-    return;
+  function renderTemples(list) {
+    templesContainer.innerHTML = "";
+    if (list.length === 0) {
+      templesContainer.innerHTML = "<p>No temples found for this filter.</p>";
+      return;
+    }
+    list.forEach((t) => {
+      const card = document.createElement("div");
+      card.className = "temple-card";
+      card.innerHTML = `
+        <img src="${t.imageUrl}" alt="Photo of ${t.templeName}" loading="lazy">
+        <h3>${t.templeName}</h3>
+        <p><strong>Location:</strong> ${t.location}</p>
+        <p><strong>Dedicated:</strong> ${t.dedicated}</p>
+        <p><strong>Area:</strong> ${t.area.toLocaleString()} sq ft</p>
+      `;
+      templesContainer.appendChild(card);
+    });
   }
-  list.forEach((t) => {
-    const card = document.createElement("div");
-    card.className = "temple-card";
-
-    card.innerHTML = `
-      <img src="${t.imageUrl}" alt="Photo of ${t.templeName}" loading="lazy">
-      <h3>${t.templeName}</h3>
-      <p><strong>Location:</strong> ${t.location}</p>
-      <p><strong>Dedicated:</strong> ${t.dedicated}</p>
-      <p><strong>Area:</strong> ${t.area.toLocaleString()} sq ft</p>
-    `;
-    templesContainer.appendChild(card);
-  });
-}
 
   function filterTemples(filter) {
-    // Remove any special class first
     templesContainer.classList.remove("small-full-image", "old-full-image", "large-full-image");
 
     let filtered = [];
     switch (filter) {
       case "old":
         filtered = temples.filter((t) => new Date(t.dedicated).getFullYear() < 1900);
-        templesContainer.classList.add("old-full-image"); // example: add old styling class
+        templesContainer.classList.add("old-full-image");
         break;
       case "new":
         filtered = temples.filter((t) => new Date(t.dedicated).getFullYear() >= 2000);
         break;
       case "large":
         filtered = temples.filter((t) => t.area >= 90000);
-        templesContainer.classList.add("large-full-image"); // example styling
+        templesContainer.classList.add("large-full-image");
         break;
       case "small":
         filtered = temples.filter((t) => t.area < 90000);
@@ -276,50 +269,47 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  // Toggle hamburger menu
   function closeMenu() {
     navMenu.classList.remove("open");
     hamburger.setAttribute("aria-expanded", "false");
     navMenu.setAttribute("aria-hidden", "true");
   }
 
-  hamburger.addEventListener("click", () => {
+  function openMenu() {
+    navMenu.classList.add("open");
+    hamburger.setAttribute("aria-expanded", "true");
+    navMenu.setAttribute("aria-hidden", "false");
+  }
+
+  // Toggle menu on hamburger click
+  hamburger.addEventListener("click", (e) => {
     const isOpen = navMenu.classList.toggle("open");
-    hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    navMenu.setAttribute("aria-hidden", isOpen ? "false" : "true");
+    hamburger.setAttribute("aria-expanded", isOpen);
+    navMenu.setAttribute("aria-hidden", !isOpen);
+    e.stopPropagation(); // Prevent it from triggering the outside click
   });
 
-  // Add event listeners to filter buttons to filter temples and close menu
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Filter buttons
   ["home", "old", "new", "large", "small"].forEach((id) => {
     const btn = document.getElementById(id);
-    btn.addEventListener("click", () => {
-      const filteredTemples = filterTemples(id);
-      renderTemples(filteredTemples);
-      closeMenu(); // Close menu after clicking a filter
-    });
+    if (btn) {
+      btn.addEventListener("click", () => {
+        const filteredTemples = filterTemples(id);
+        renderTemples(filteredTemples);
+        closeMenu();
+      });
+    }
   });
 
+  // Initial render and footer info
   renderTemples(temples);
-
-  // Set footer dates
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("lastModified").textContent = document.lastModified;
 });
-
-  
-
-
-  // Insert current year and last modified if you want:
-  document.getElementById("year").textContent = new Date().getFullYear();
-  document.getElementById("lastModified").textContent = document.lastModified;
-
-  // Hamburger Menu Toggle (if applicable)
-  const hamburger = document.querySelector("#hamburger");
-  const navMenu = document.querySelector("#nav-menu");
-  if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-      const isOpen = navMenu.classList.toggle("open");
-      hamburger.setAttribute("aria-expanded", isOpen);
-      navMenu.setAttribute("aria-hidden", !isOpen);
-    });
-  }
