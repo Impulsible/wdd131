@@ -31,7 +31,6 @@ h1, h2, h3, .main-heading, header h1 {
   font-family: 'Playfair Display', serif;
 }
 
-
 #hamburger {
   font-size: 1.5rem;
   background: none;
@@ -39,25 +38,50 @@ h1, h2, h3, .main-heading, header h1 {
   color: white;
   cursor: pointer;
   display: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1001;
+  padding: 0.5rem;
 }
 
 nav#nav-menu {
   display: flex;
   gap: 1rem;
+  background: transparent;
+  padding: 1rem 0;
+  justify-content: center;
+  user-select: none;
+  position: static;
+  box-shadow: none;
+  border: none;
+  max-height: none;
+  overflow: visible;
+  flex-direction: row;
+  z-index: 1000;
 }
 
-nav#nav-menu a {
+nav#nav-menu a, #nav-menu button {
   color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 nav#nav-menu a:hover,
-nav#nav-menu a:focus {
-  background-color: #0066cc;
+nav#nav-menu a:focus,
+#nav-menu button:hover,
+#nav-menu button:focus {
+  background-color: #033a66;
   outline: none;
+  border-color: #ffc0ec;
+  color: white;
 }
 
 main {
@@ -67,29 +91,26 @@ main {
   transition: opacity 0.5s ease-in-out;
 }
 
-
-.temple-card img {
-  width: 100%;          /* full width of card */
-  height: 320px;        /* fixed height for all images */
-  object-fit: cover;    /* crop images to fill container without distortion */
+.temple-card {
+  border: 3px solid #213237;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 0.5rem;
+  background: #fafafa;
+  text-align: center;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
+/* Unified temple-card image styling */
 .temple-card img {
   width: 100%;
-  height: 320px;
+  height: 250px; /* rectangle, consistent */
   object-fit: cover;
-  border-radius: 10px;
-  
-  /* Fine edge */
-  border: 1.5px solid #ccc; /* subtle light gray border */
-  
-  /* Optional subtle shadow for depth */
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 0.5rem;
+  display: block;
+  border: 1.5px solid #ccc;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
-  
-  margin-bottom: 1rem;
 }
 
 .grid-container {
@@ -99,95 +120,144 @@ main {
   padding: 1rem;
 }
 
-.temple-card {
-  border: 3px solid #213237;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  padding: 0.5rem;
-  background: #fafafa;
-  text-align: center;
-}
+/* Responsive layouts */
 
-.temple-card img {
-  width: 100%;
-  height: 250px;    /* shorter height to make rectangle wider */
-  object-fit: cover;
-  border-radius: 0;
-  margin-bottom: 0.5rem;
-  display: block;
+@media (max-width: 900px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #hamburger {
+    display: block;
+    color: #e5ebf0;
+  }
+
+  nav#nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #004080;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 10;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  nav#nav-menu.active {
+    display: flex;
+    max-height: 300px;
+  }
+
+  nav#nav-menu a, #nav-menu button {
+    padding: 1rem;
+    border-top: 1px solid #0059b3;
+    width: 100%;
+    text-align: left;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 1rem 0.5rem;
+  }
+
+  footer p {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
   #templesContainer {
-    display: block; /* or flex with column */
+    display: block;
   }
 
   #templesContainer .temple-card {
     max-width: 100% !important;
     width: 100% !important;
-    margin: 0 0 1rem 0; /* spacing between stacked cards */
+    margin: 0 0 1rem 0;
   }
 
   #templesContainer .temple-card img {
     width: 100%;
     height: auto;
-    display: block;
-    margin: 0; /* no side margins */
+    margin: 0;
+    border-radius: 10px;
   }
 }
 
+/* Filtered views: small, old, large */
 
-button {
-      margin: 5px;
-      padding: 8px 12px;
-      cursor: pointer;
-    }
-    #templeList {
-      margin-top: 20px;
-      list-style: none;
-      padding-left: 0;
-    }
-    #templeList li {
-      margin-bottom: 10px;
-    }
-
-    /* Small filter: images and cards full width ONLY inside the small-full-image class */
-#templesContainer.small-full-image .temple-card {
-  max-width: 100% !important;
+#templesContainer.small-full-image .temple-card,
+#templesContainer.old-full-image .temple-card,
+#templesContainer.large-full-image .temple-card {
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  max-width: 400px !important;
   width: 100% !important;
-  padding: 0;
-  margin-bottom: 1rem;
 }
 
 #templesContainer.small-full-image .temple-card img {
-  max-width: 100% !important;
-  width: 100% !important;
-  height: auto;
-  display: block;
-  margin: 0;  /* remove margin */
-}
-
-/* Old filter: bigger cards, images fully visible aligned top */
-#templesContainer.old-full-image .temple-card {
-  max-width: 600px !important;
-  width: 100% !important;
-  padding: 0;
-  margin: 1rem auto;
-  overflow: visible;  /* Make sure container doesn't clip content */
+  width: 300px !important;
+  height: 300px !important;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 0.5rem;
 }
 
 #templesContainer.old-full-image .temple-card img {
-  max-width: 100% !important;
+  width: 100% !important;
   height: auto !important;
-  display: block;
-  margin: 0 auto;
   object-fit: contain;
-  object-position: top;
-  max-height: none; /* prevent any max-height limiting */
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
 }
 
+#templesContainer.large-full-image .temple-card img {
+  width: 100% !important;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
 
+/* Mobile override for filtered views */
+@media (max-width: 600px) {
+  #templesContainer.small-full-image .temple-card,
+  #templesContainer.old-full-image .temple-card,
+  #templesContainer.large-full-image .temple-card {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0.5rem 0;
+    padding: 0.25rem;
+  }
+  #templesContainer.small-full-image .temple-card img,
+  #templesContainer.old-full-image .temple-card img,
+  #templesContainer.large-full-image .temple-card img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+}
 
+/* Figures */
 figure {
   margin: 0;
   border-radius: 30px;
@@ -195,6 +265,7 @@ figure {
   box-shadow: 0 8px 20px rgba(0, 64, 128, 0.15);
   text-align: center;
   max-width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 figcaption {
@@ -223,11 +294,9 @@ figure img {
   margin: 0 auto;
 }
 
-
-/* Hover effects */
 figure:hover {
   transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0, 64, 128, 0.3);
+  box-shadow: 0 12px 30px rgba(245, 246, 248, 0.3);
 }
 
 figure:hover img {
@@ -258,59 +327,6 @@ footer p {
 
 .temple-icon {
   font-size: 1.2rem;
-}
-
-/* Responsive: tablet */
-@media (max-width: 900px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsive: mobile */
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  #hamburger {
-    display: block;
-  }
-
-  nav#nav-menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: #004080;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    z-index: 10;
-  }
-
-  nav#nav-menu.active {
-    display: flex;
-  }
-
-  nav#nav-menu a {
-    padding: 1rem;
-    border-top: 1px solid #0059b3;
-  }
-
-  .grid-container {
-    grid-template-columns: 1fr;
-  }
-
-  footer {
-    font-size: 0.8rem;
-    padding: 1rem 0.5rem;
-  }
-
-  footer p {
-    flex-direction: column;
-    gap: 0.25rem;
-  }
 }
 
 /* Accessibility */
@@ -360,336 +376,95 @@ html {
   color: rgb(12, 12, 12);
 }
 
-
-/* Base nav styles */
-nav {
-  display: none;
-  flex-direction: column;
-  background-color: #003366;
-  padding: 1rem;
-}
-
-nav.open {
-  display: flex;
-}
-
-#hamburger {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-/* Navigation links */
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0.5rem 0;
-}
-
-nav a:hover {
-  background-color: #005bb5;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-}
-
-#hamburger {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1001;
-  background: transparent;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-#nav-menu {
-  display: none;
-  position: fixed;
-  top: 50px;
-  right: 10px;
-  background: white;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-/* When open */
-#nav-menu.open {
-  display: block;
-}
-
-/* Style menu buttons */
-#nav-menu button {
-  display: block;
-  margin-bottom: 0.5rem;
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: none;
-  padding: 0.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* Hide hamburger and nav-menu on larger screens */
-@media (min-width: 601px) {
-  #hamburger {
-    display: none;
-  }
-  #nav-menu {
-    display: flex !important;
-    position: static;
-    box-shadow: none;
-    border: none;
-    padding: 0;
-  }
-  #nav-menu button {
-    display: inline-block;
-    margin: 0 1rem 0 0;
-    width: auto;
-  }
-}
-/* Small filter: images and cards full width stacked vertically */
-#templesContainer.small-full-image .temple-card {
-  max-width: 100% !important;
-  width: 100% !important;
-  padding: 0;
-  margin-bottom: 1rem;
-}
-#templesContainer.small-full-image .temple-card img {
-  max-width: 100% !important;
-  width: 100% !important;
-  height: auto;
-  display: block;
-  margin: 0;
-  object-fit: contain;
-  border-radius: 0;
-}
-
-/* Old filter: bigger cards and images without cropping, stacked vertically */
-#templesContainer.old-full-image .temple-card {
-  max-width: 90% !important;
-  width: 90% !important;
-  margin: 1rem auto;
-  padding: 0.5rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-#templesContainer.old-full-image .temple-card img {
-  width: 100% !important;
-  height: auto !important;
-  display: block;
-  object-fit: contain;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
-}
-
-/* Large filter: moderate to large cards, images fit nicely with some cropping */
-#templesContainer.large-full-image .temple-card {
-  max-width: 400px !important;
-  width: 100% !important;
-  margin: 1rem auto;
-  padding: 0.5rem;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-}
-#templesContainer.large-full-image .temple-card img {
-  width: 100% !important;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* Mobile view: stack vertically for all filtered states */
-@media (max-width: 600px) {
-  #templesContainer.small-full-image .temple-card,
-  #templesContainer.old-full-image .temple-card,
-  #templesContainer.large-full-image .temple-card {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0.5rem 0;
-    padding: 0.25rem;
-  }
-  #templesContainer.small-full-image .temple-card img,
-  #templesContainer.old-full-image .temple-card img,
-  #templesContainer.large-full-image .temple-card img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: contain;
-    border-radius: 4px;
-  }
-}
-/* Small filter: uniform square images, all same size */
-#templesContainer.small-full-image .temple-card {
-  max-width: 300px !important;
-  width: 400px !important;
-  padding: 0;
-  margin: 1rem auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-#templesContainer.small-full-image .temple-card img {
-  width: 300px !important;
-  height: 300px !important;
-  object-fit: cover;  /* crop to fill */
-  border-radius: 8px 8px 0 0;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* Desktop nav menu container */
-#nav-menu {
-  display: flex;
-  gap: 1rem;
-  background: transparent;
-  padding: 1rem 0;
-  justify-content: center;
-  user-select: none;
-}
-
-/* Desktop nav buttons with individual border */
-#nav-menu button {
-  background: transparent;
-  color: #fbfdff;
-  border: 1px solid #003366;  /* darker navy blue border */
-  padding: 0.5rem 1rem;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-  border-radius: 4px; /* small rounding */
-  font-weight: 600;
-}
-
-/* Hover/focus states: invert colors and border */
-#nav-menu button:hover,
-#nav-menu button:focus {
-  color: white;
-  background-color: #005599; /* lighter blue on hover */
-  border-color: #004477;
-  outline: none;
-}
-
-/* Mobile hamburger and dropdown */
-@media (max-width: 768px) {
-  #nav-menu {
-    display: none !important;
-    flex-direction: column;
-    position: absolute;
-    top: 3.5rem;
-    right: 1rem;
-    width: 180px;
-    background: #fff; /* white background for dropdown */
-    padding: 1rem;
-    border-radius: 8px; /* slight rounding on mobile dropdown */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-
-  #nav-menu.active {
-    display: flex !important;
-  }
-
-  #nav-menu button {
-    border: 1px solid #003366;
-    margin-bottom: 0.6rem;
-  }
-  
-  #nav-menu button:last-child {
-    margin-bottom: 0;
-  }
-
-  #hamburger {
-    display: block;
-    background: transparent;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: #e5ebf0;
-  }
-}
-
-@media (min-width: 769px) {
-  #hamburger {
-    display: none;
-  }
-  #nav-menu {
-    display: flex !important;
-    position: static;
-    width: auto;
-    box-shadow: none;
-    padding: 1rem 0;
-  }
-}
-
 .visually-hidden-links {
   position: absolute;
+  left: -9999px;
+  top: auto;
   width: 1px;
   height: 1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
   white-space: nowrap;
+  color: transparent;
+  background: none;
+  pointer-events: none;
 }
 
-/* MOBILE FIRST */
+@media (max-width: 600px) {
+  .visually-hidden-links {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    white-space: normal;
+    color: inherit;
+    background: transparent;
+    pointer-events: auto;
+    display: block;
+    padding: 0.5rem;
+  }
+
+  .visually-hidden-links a {
+    display: block;
+    color: white;
+    background: #004080;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.25rem;
+    text-decoration: none;
+  }
+
+  .visually-hidden-links a:hover {
+    background: #0059b3;
+  }
+}
+
+/* HAMBURGER BUTTON */
 #hamburger {
-  display: block;
+  font-size: 2rem;
   background: none;
   border: none;
-  font-size: 2rem;
+  color: white;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
   cursor: pointer;
+  display: none; /* hidden on desktop */
 }
 
+/* DROPDOWN MENU STYLING */
 #nav-menu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
+  display: none;
   flex-direction: column;
+  position: absolute;
+  top: 3.5rem;
+  right: 1rem;
   background-color: #004080;
-}
-
-#nav-menu.open {
-  max-height: 300px; /* Enough to show all buttons */
+  border-radius: 8px;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
 
 #nav-menu button {
   background: none;
   border: none;
   color: white;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
+  text-align: right;
+  cursor: pointer;
   font-size: 1rem;
-  text-align: left;
 }
 
-/* DESKTOP VIEW */
-@media (min-width: 768px) {
+#nav-menu button:hover {
+  background-color: #0059b3;
+  border-radius: 4px;
+}
+
+/* MOBILE ONLY */
+@media (max-width: 600px) {
   #hamburger {
-    display: none; /* Hide hamburger */
-  }
-
-  #nav-menu {
-    display: flex !important;
-    max-height: none;
-    overflow: visible;
-    flex-direction: row;
-    gap: 1rem;
-    background: none;
-  }
-
-  #nav-menu button {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    color: white;
+    display: block;
   }
 }
-
