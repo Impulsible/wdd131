@@ -423,3 +423,72 @@ html {
   }
 }
 
+/* Desktop styles */
+#hamburger {
+  display: none; /* Hide hamburger on desktop */
+}
+
+#nav-menu {
+  display: flex !important; /* Always visible on desktop */
+  position: static;
+  flex-direction: row;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  max-width: none;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  /* Show hamburger on mobile */
+  #hamburger {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  /* Hide nav menu by default on mobile */
+  #nav-menu {
+    display: none !important;  /* force hidden on mobile */
+    position: fixed;
+    top: 3.5rem;
+    right: 1rem;
+    background-color: #004080;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    flex-direction: column !important;
+    max-width: 200px;
+  }
+
+  /* Show nav menu when toggled */
+  #nav-menu.show {
+    display: flex !important;
+  }
+
+  /* Style nav buttons for mobile */
+  #nav-menu button {
+    color: white;
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  #nav-menu button:hover,
+  #nav-menu button:focus {
+    background-color: #0059b3;
+    outline: none;
+  }
+}
