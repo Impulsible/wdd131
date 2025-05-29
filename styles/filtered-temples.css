@@ -492,3 +492,132 @@ html {
     outline: none;
   }
 }
+/* Desktop styles */
+#hamburger {
+  display: none; /* hide hamburger on desktop */
+}
+
+#nav-menu {
+  display: flex !important; /* always visible on desktop */
+  position: static;
+  flex-direction: row;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  max-width: none;
+}
+
+#nav-menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  #hamburger {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  #nav-menu {
+    display: none !important; /* hidden by default */
+    position: fixed;
+    top: 3.5rem;
+    right: 1rem;
+    background-color: #004080;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    flex-direction: column !important;
+    max-width: 200px;
+  }
+
+  #nav-menu.show {
+    display: flex !important; /* show when toggled */
+  }
+
+  #nav-menu button {
+    color: white;
+    width: 100%;
+    text-align: left;
+  }
+
+  #nav-menu button:hover,
+  #nav-menu button:focus {
+    background-color: #0059b3;
+    outline: none;
+  }
+}
+
+/* Temple container & cards */
+#templesContainer {
+  margin-top: 4rem;
+  padding: 1rem;
+}
+
+.temple-card {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+#nav-menu {
+  display: none;            /* Hide nav by default */
+  flex-direction: column;   /* Stack buttons vertically */
+  background-color: #eee;   /* Light background */
+  position: absolute;       /* Dropdown positioning */
+  top: 50px;                /* Below hamburger */
+  right: 10px;              /* Align right */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1000;            /* Above other content */
+  min-width: 150px;
+}
+
+#nav-menu.show {
+  display: flex;            /* Show nav when .show class is toggled */
+}
+
+#nav-menu button {
+  background: none;
+  border: none;
+  padding: 8px 10px;
+  margin: 3px 0;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+#nav-menu button:hover,
+#nav-menu button:focus {
+  background-color: #ccc;
+  outline: none;
+}
+
+/* Hamburger styling */
+#hamburger {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Optional: position the hamburger in top-right corner */
+header {
+  position: relative;
+  padding: 10px;
+}
