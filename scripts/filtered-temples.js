@@ -285,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Close mobile menu on nav button click and render filtered temples
   navMenu.querySelectorAll("button").forEach(button => {
     button.addEventListener("click", () => {
-      // Close menu if mobile
       if (window.innerWidth <= 600) {
         navMenu.classList.remove("show");
         hamburger.setAttribute("aria-expanded", "false");
@@ -294,7 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.focus();
       }
 
-      // Filter temples by button id
       const filterId = button.id;
       const filteredTemples = filterTemples(filterId);
       renderTemples(filteredTemples);
@@ -303,10 +301,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial render - show all temples on load
   renderTemples(temples);
-});
 
-
-  // Initial render and footer
-  renderTemples(temples);
+  // Update footer year and last modified
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("lastModified").textContent = document.lastModified;
+});
