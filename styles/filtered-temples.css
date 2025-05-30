@@ -486,3 +486,130 @@ nav button:focus {
     border-bottom: none;
   }
 }
+
+:root {
+  --color-bg: #f4f4f4;
+  --color-text: #1a1a1a;
+  --color-accent: #2b6cb0;
+  --color-muted: #333333;
+  --color-highlight: #d97706;
+  --color-footer-bg: #1e293b;
+  --color-footer-text: #ffffff;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+header {
+  background-color: #004080;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+h1, h2, h3, .main-heading, header h1 {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+}
+
+/* Hamburger button */
+#hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none; /* hide by default */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1001;
+  padding: 0.5rem;
+}
+
+/* Nav menu - desktop */
+nav#nav-menu {
+  display: flex;
+  gap: 1rem;
+  background: transparent;
+  padding: 1rem 0;
+  justify-content: center;
+  user-select: none;
+  position: static;
+  box-shadow: none;
+  border: none;
+  max-height: none;
+  overflow: visible;
+  flex-direction: row;
+  z-index: 1000;
+}
+
+nav#nav-menu button {
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+nav#nav-menu button:hover,
+nav#nav-menu button:focus {
+  background-color: #033a66;
+  outline: none;
+  color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  /* Show hamburger on mobile */
+  #hamburger {
+    display: block;
+  }
+
+  /* Hide nav menu by default */
+  nav#nav-menu {
+    display: none;
+    position: absolute;
+    top: 56px;
+    right: 0;
+    background-color: #004080;
+    flex-direction: column;
+    width: 180px;
+    padding: 1rem;
+    border-radius: 0 0 0 8px;
+    box-shadow: -3px 3px 7px rgba(0,0,0,0.5);
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  /* Show nav menu when aria-hidden is false */
+  nav#nav-menu[aria-hidden="false"] {
+    display: flex;
+  }
+
+  nav#nav-menu button {
+    color: white;
+    text-align: right;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #666;
+    width: 100%;
+  }
+
+  nav#nav-menu button:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Rest of your styles (main, temple-card, footer etc.) unchanged... */
