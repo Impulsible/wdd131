@@ -402,13 +402,13 @@ html {
   background: #0059b3;
 }
 
-/* Reset and base */
+/* Base header styles */
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
   background-color: #333;
+  padding: 1rem;
   color: white;
   position: relative;
 }
@@ -418,30 +418,10 @@ h1 {
   font-size: 1.5rem;
 }
 
-/* Hamburger - hidden on desktop */
-#hamburger {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  position: fixed; /* fixed to top right on mobile */
-  top: 1rem;
-  right: 1rem;
-  z-index: 1001;
-  display: none;
-}
-
-/* Nav menu desktop styles */
+/* Desktop nav */
 nav {
   display: flex;
   gap: 1rem;
-  position: static;
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-  flex-direction: row;
-  max-width: none;
 }
 
 nav button {
@@ -451,6 +431,7 @@ nav button {
   font-size: 1rem;
   cursor: pointer;
   padding: 0.3rem 0.6rem;
+  transition: background-color 0.3s;
 }
 
 nav button:hover,
@@ -459,27 +440,38 @@ nav button:focus {
   outline: none;
 }
 
-/* Mobile styles */
+/* Hamburger hidden on desktop */
+#hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
+}
+
+/* MOBILE: Hamburger visible and nav hidden by default */
 @media (max-width: 600px) {
-  /* Show hamburger */
   #hamburger {
     display: block;
-    color: white;
   }
 
-  /* Hide nav by default */
   nav {
-    display: none;
-    position: fixed;
-    top: 3.5rem;
-    right: 1rem;
+    display: none; /* hide nav */
+    position: absolute;
+    top: 56px;
+    right: 0;
     background-color: #004080;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 1000;
     flex-direction: column;
-    max-width: 200px;
+    width: 180px;
+    padding: 1rem;
+    border-radius: 0 0 0 8px;
+    box-shadow: -3px 3px 7px rgba(0,0,0,0.5);
+    z-index: 1000;
   }
 
   /* Show nav when aria-hidden is false */
@@ -489,23 +481,19 @@ nav button:focus {
 
   nav button {
     color: white;
-    width: 100%;
-    text-align: left;
-    padding: 0.5rem 1rem;
+    text-align: right;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #666;
   }
 
-  nav button:hover,
-  nav button:focus {
-    background-color: #0059b3;
-    outline: none;
+  nav button:last-child {
+    border-bottom: none;
   }
-}
-@media (max-width: 600px) {
-  nav button:hover,
-  nav button:focus {
-    background-color: #0059b3; /* keep focus style */
-  }
-  nav button:hover {
-    background-color: transparent; /* disable hover bg on touch devices */
+
+  /* Disable hover on mobile (touch devices) */
+  @media (hover: none) {
+    nav button:hover {
+      background-color: transparent !important;
+    }
   }
 }
