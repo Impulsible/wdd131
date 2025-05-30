@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  // Hamburger toggle click event: show/hide nav menu dropdown
+  // Hamburger toggle click event
   hamburger.addEventListener("click", () => {
     const expanded = hamburger.getAttribute("aria-expanded") === "true";
     hamburger.setAttribute("aria-expanded", String(!expanded));
@@ -282,10 +282,9 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.textContent = expanded ? "☰" : "✖";
   });
 
-  // On nav menu button click: filter temples & close menu if mobile
+  // Close mobile menu on nav button click and render filtered temples
   navMenu.querySelectorAll("button").forEach(button => {
     button.addEventListener("click", () => {
-      // Close dropdown menu on small screens
       if (window.innerWidth <= 600) {
         navMenu.classList.remove("show");
         hamburger.setAttribute("aria-expanded", "false");
@@ -294,18 +293,27 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.focus();
       }
 
-      // Filter temples and render
       const filterId = button.id;
       const filteredTemples = filterTemples(filterId);
       renderTemples(filteredTemples);
     });
   });
 
-  // Initial render - show all temples on page load
+  // Initial render - show all temples on load
   renderTemples(temples);
 
-  // Update footer year and last modified date
+  // Update footer year and last modified
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("lastModified").textContent = document.lastModified;
 });
+
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+  const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+  hamburger.setAttribute('aria-expanded', String(!isExpanded));
+  navMenu.setAttribute('aria-hidden', String(isExpanded));
+});
+
 
