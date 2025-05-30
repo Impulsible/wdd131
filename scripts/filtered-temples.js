@@ -215,13 +215,12 @@ const temples = [
 
 ];
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const templesContainer = document.getElementById("templesContainer");
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
 
-  // Function to render temples list
+  // Render temples list
   function renderTemples(list) {
     templesContainer.innerHTML = "";
     if (list.length === 0) {
@@ -242,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Function to filter temples by criteria
+  // Filter temples
   function filterTemples(filter) {
     templesContainer.classList.remove("small-full-image", "old-full-image", "large-full-image");
 
@@ -271,14 +270,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  // Hamburger toggle click event
+  // Hamburger toggle
   hamburger.addEventListener("click", () => {
     const expanded = hamburger.getAttribute("aria-expanded") === "true";
     hamburger.setAttribute("aria-expanded", String(!expanded));
     navMenu.setAttribute("aria-hidden", String(expanded));
-    navMenu.classList.toggle("show");
 
-    // Toggle hamburger icon ☰ / ✖
+    // Toggle icon
     hamburger.textContent = expanded ? "☰" : "✖";
   });
 
@@ -286,7 +284,6 @@ document.addEventListener("DOMContentLoaded", () => {
   navMenu.querySelectorAll("button").forEach(button => {
     button.addEventListener("click", () => {
       if (window.innerWidth <= 600) {
-        navMenu.classList.remove("show");
         hamburger.setAttribute("aria-expanded", "false");
         navMenu.setAttribute("aria-hidden", "true");
         hamburger.textContent = "☰";
@@ -299,22 +296,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Initial render - show all temples on load
+  // Initial render
   renderTemples(temples);
 
-  // Update footer year and last modified
+  // Update footer year and last modified (optional)
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("lastModified").textContent = document.lastModified;
 });
-
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-
-hamburger.addEventListener('click', () => {
-  const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-  hamburger.setAttribute('aria-expanded', String(!isExpanded));
-  navMenu.setAttribute('aria-hidden', String(isExpanded));
-});
-
-
-
