@@ -500,3 +500,12 @@ nav button:focus {
     outline: none;
   }
 }
+@media (max-width: 600px) {
+  nav button:hover,
+  nav button:focus {
+    background-color: #0059b3; /* keep focus style */
+  }
+  nav button:hover {
+    background-color: transparent; /* disable hover bg on touch devices */
+  }
+}
