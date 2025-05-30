@@ -311,14 +311,18 @@ const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 
 hamburger.addEventListener('click', () => {
-  const isHidden = navMenu.getAttribute('aria-hidden') === 'true';
-  navMenu.setAttribute('aria-hidden', String(!isHidden));
-  hamburger.setAttribute('aria-expanded', String(isHidden));
+  navMenu.classList.toggle('active');
+  // Update aria-expanded and aria-hidden for accessibility
+  const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+  hamburger.setAttribute('aria-expanded', !expanded);
+  navMenu.setAttribute('aria-hidden', expanded);
+});
+
 
   // Remove focus to prevent yellow hover sticking
   if (!isHidden) {
     hamburger.blur();
   }
-});
+
 
 
