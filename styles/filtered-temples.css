@@ -402,136 +402,74 @@ html {
   background: #0059b3;
 }
 
-/* Hide hamburger on desktop */
+/* Reset and base */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  position: relative;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Hamburger - hidden on desktop */
 #hamburger {
   font-size: 2rem;
   background: none;
   border: none;
   color: white;
-  position: absolute;
+  cursor: pointer;
+  position: fixed; /* fixed to top right on mobile */
   top: 1rem;
   right: 1rem;
   z-index: 1001;
-  cursor: pointer;
-  display: none; /* hidden on desktop */
+  display: none;
 }
 
-/* Show hamburger on mobile */
-@media (max-width: 600px) {
-  #hamburger {
-    display: block;
-  }
-}
-
-/* Desktop styles */
-#hamburger {
-  display: none; /* Hide hamburger on desktop */
-}
-
-#nav-menu {
-  display: flex !important; /* Always visible on desktop */
+/* Nav menu desktop styles */
+nav {
+  display: flex;
+  gap: 1rem;
   position: static;
-  flex-direction: row;
   background: transparent;
   padding: 0;
   box-shadow: none;
-  max-width: none;
-}
-
-/* Mobile styles */
-@media (max-width: 600px) {
-  /* Show hamburger on mobile */
-  #hamburger {
-    display: block;
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    z-index: 1001;
-  }
-
-  /* Hide nav menu by default on mobile */
-  #nav-menu {
-    display: none !important;  /* force hidden on mobile */
-    position: fixed;
-    top: 3.5rem;
-    right: 1rem;
-    background-color: #004080;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 1000;
-    flex-direction: column !important;
-    max-width: 200px;
-  }
-
-  /* Show nav menu when toggled */
-  #nav-menu.show {
-    display: flex !important;
-  }
-
-  /* Style nav buttons for mobile */
-  #nav-menu button {
-    color: white;
-    background: none;
-    border: none;
-    padding: 0.5rem 1rem;
-    text-align: left;
-    width: 100%;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-
-  #nav-menu button:hover,
-  #nav-menu button:focus {
-    background-color: #0059b3;
-    outline: none;
-  }
-}
-/* Desktop styles */
-#hamburger {
-  display: none; /* hide hamburger on desktop */
-}
-
-#nav-menu {
-  display: flex !important; /* always visible on desktop */
-  position: static;
   flex-direction: row;
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
   max-width: none;
 }
 
-#nav-menu button {
+nav button {
   background: none;
   border: none;
-  cursor: pointer;
+  color: white;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+}
+
+nav button:hover,
+nav button:focus {
+  background-color: #555;
+  outline: none;
 }
 
 /* Mobile styles */
 @media (max-width: 600px) {
+  /* Show hamburger */
   #hamburger {
     display: block;
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    z-index: 1001;
+    color: white;
   }
 
-  #nav-menu {
-    display: none !important; /* hidden by default */
+  /* Hide nav by default */
+  nav {
+    display: none;
     position: fixed;
     top: 3.5rem;
     right: 1rem;
@@ -540,78 +478,25 @@ html {
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     z-index: 1000;
-    flex-direction: column !important;
+    flex-direction: column;
     max-width: 200px;
   }
 
-  #nav-menu.show {
-    display: flex !important; /* show when toggled */
+  /* Show nav when aria-hidden is false */
+  nav[aria-hidden="false"] {
+    display: flex;
   }
 
-  #nav-menu button {
+  nav button {
     color: white;
     width: 100%;
     text-align: left;
+    padding: 0.5rem 1rem;
   }
 
-  #nav-menu button:hover,
-  #nav-menu button:focus {
+  nav button:hover,
+  nav button:focus {
     background-color: #0059b3;
     outline: none;
-  }
-}
-
-/* Temple container & cards */
-#templesContainer {
-  margin-top: 4rem;
-  padding: 1rem;
-}
-
-.temple-card {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-}
-/* Desktop styles (default) */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background: #333;
-  color: white;
-}
-
-nav {
-  display: flex; /* always visible on desktop */
-  gap: 1rem;
-}
-
-#hamburger {
-  display: none; /* hidden on desktop */
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-  #hamburger {
-    display: block; /* show hamburger only on mobile */
-  }
-
-  nav {
-    display: none; /* hide nav on mobile by default */
-    position: absolute;
-    top: 56px;
-    right: 0;
-    background: #444;
-    flex-direction: column;
-    width: 180px;
-    padding: 1rem;
-    border-radius: 0 0 0 8px;
-    box-shadow: -3px 3px 7px rgba(0,0,0,0.5);
-  }
-
-  nav[aria-hidden="false"] {
-    display: flex; /* show nav when toggled */
   }
 }
