@@ -279,11 +279,11 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.setAttribute("aria-expanded", String(!expanded));
     navMenu.setAttribute("aria-hidden", String(expanded));
 
-    // Toggle icon between hamburger and close
+    // Toggle hamburger icon between ☰ and ✖
     hamburger.textContent = expanded ? "☰" : "✖";
   });
 
-  // Close menu when clicking a nav button on mobile
+  // Close nav when clicking a nav button on mobile
   navMenu.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       if (window.innerWidth <= 600) {
@@ -292,22 +292,8 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.textContent = "☰";
         hamburger.focus();
       }
-
-      // Here you can add filtering logic or other button effects if needed
+      // Add your filter logic here if needed
     });
-  });
-});
-
-
-  // Close mobile menu on nav button click and render filtered temples
-  navMenu.querySelectorAll("button").forEach(button => {
-    button.addEventListener("click", () => {
-      if (window.innerWidth <= 600) {
-        hamburger.setAttribute("aria-expanded", "false");
-        navMenu.setAttribute("aria-hidden", "true");
-        hamburger.textContent = "☰";
-        hamburger.focus();
-      }
 
       const filterId = button.id;
       const filteredTemples = filterTemples(filterId);
@@ -321,9 +307,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Update footer year and last modified (optional)
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("lastModified").textContent = document.lastModified;
-});
-
-// Remove focus from nav buttons when scrolling (fix sticky hover on mobile)
-window.addEventListener("scroll", () => {
-  document.activeElement.blur();
 });
