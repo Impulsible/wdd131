@@ -270,21 +270,21 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-  const hamburger = document.getElementById("hamburger");
-  const navMenu = document.getElementById("nav-menu");
 
+  // Hamburger toggle
   hamburger.addEventListener("click", () => {
     const expanded = hamburger.getAttribute("aria-expanded") === "true";
     hamburger.setAttribute("aria-expanded", String(!expanded));
     navMenu.setAttribute("aria-hidden", String(expanded));
 
-    // Toggle hamburger icon between ☰ and ✖
+    // Toggle icon
     hamburger.textContent = expanded ? "☰" : "✖";
   });
 
-  // Close nav when clicking a nav button on mobile
-  navMenu.querySelectorAll("button").forEach((button) => {
+  
+
+  // Close mobile menu on nav button click and render filtered temples
+  navMenu.querySelectorAll("button").forEach(button => {
     button.addEventListener("click", () => {
       if (window.innerWidth <= 600) {
         hamburger.setAttribute("aria-expanded", "false");
@@ -292,8 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.textContent = "☰";
         hamburger.focus();
       }
-      // Add your filter logic here if needed
-    });
 
       const filterId = button.id;
       const filteredTemples = filterTemples(filterId);
@@ -308,3 +306,19 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("lastModified").textContent = document.lastModified;
 });
+
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+  const isHidden = navMenu.getAttribute('aria-hidden') === 'true';
+  navMenu.setAttribute('aria-hidden', String(!isHidden));
+  hamburger.setAttribute('aria-expanded', String(isHidden));
+
+  // Remove focus to prevent yellow hover sticking
+  if (!isHidden) {
+    hamburger.blur();
+  }
+});
+
+
