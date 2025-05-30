@@ -573,51 +573,45 @@ html {
   padding: 1rem;
   border-radius: 8px;
 }
-#nav-menu {
-  display: none;            /* Hide nav by default */
-  flex-direction: column;   /* Stack buttons vertically */
-  background-color: #eee;   /* Light background */
-  position: absolute;       /* Dropdown positioning */
-  top: 50px;                /* Below hamburger */
-  right: 10px;              /* Align right */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  z-index: 1000;            /* Above other content */
-  min-width: 150px;
-}
-
-#nav-menu.show {
-  display: flex;            /* Show nav when .show class is toggled */
-}
-
-#nav-menu button {
-  background: none;
-  border: none;
-  padding: 8px 10px;
-  margin: 3px 0;
-  text-align: left;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 3px;
-}
-
-#nav-menu button:hover,
-#nav-menu button:focus {
-  background-color: #ccc;
-  outline: none;
-}
-
-/* Hamburger styling */
-#hamburger {
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* Optional: position the hamburger in top-right corner */
+/* Desktop styles (default) */
 header {
-  position: relative;
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #333;
+  color: white;
+}
+
+nav {
+  display: flex; /* always visible on desktop */
+  gap: 1rem;
+}
+
+#hamburger {
+  display: none; /* hidden on desktop */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  #hamburger {
+    display: block; /* show hamburger only on mobile */
+  }
+
+  nav {
+    display: none; /* hide nav on mobile by default */
+    position: absolute;
+    top: 56px;
+    right: 0;
+    background: #444;
+    flex-direction: column;
+    width: 180px;
+    padding: 1rem;
+    border-radius: 0 0 0 8px;
+    box-shadow: -3px 3px 7px rgba(0,0,0,0.5);
+  }
+
+  nav[aria-hidden="false"] {
+    display: flex; /* show nav when toggled */
+  }
 }
