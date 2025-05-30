@@ -215,12 +215,13 @@ const temples = [
 
 ];
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const templesContainer = document.getElementById("templesContainer");
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
 
-  // Render temples list
+  // Function to render temples list
   function renderTemples(list) {
     templesContainer.innerHTML = "";
     if (list.length === 0) {
@@ -241,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Filter temples
+  // Function to filter temples by criteria
   function filterTemples(filter) {
     templesContainer.classList.remove("small-full-image", "old-full-image", "large-full-image");
 
@@ -270,23 +271,22 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-
-  // Hamburger toggle
+  // Hamburger toggle click event
   hamburger.addEventListener("click", () => {
     const expanded = hamburger.getAttribute("aria-expanded") === "true";
     hamburger.setAttribute("aria-expanded", String(!expanded));
     navMenu.setAttribute("aria-hidden", String(expanded));
+    navMenu.classList.toggle("show");
 
-    // Toggle icon
+    // Toggle hamburger icon ☰ / ✖
     hamburger.textContent = expanded ? "☰" : "✖";
   });
-
-  
 
   // Close mobile menu on nav button click and render filtered temples
   navMenu.querySelectorAll("button").forEach(button => {
     button.addEventListener("click", () => {
       if (window.innerWidth <= 600) {
+        navMenu.classList.remove("show");
         hamburger.setAttribute("aria-expanded", "false");
         navMenu.setAttribute("aria-hidden", "true");
         hamburger.textContent = "☰";
@@ -299,10 +299,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Initial render
+  // Initial render - show all temples on load
   renderTemples(temples);
 
-  // Update footer year and last modified (optional)
+  // Update footer year and last modified
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("lastModified").textContent = document.lastModified;
 });
@@ -311,18 +311,10 @@ const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 
 hamburger.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
-  // Update aria-expanded and aria-hidden for accessibility
-  const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-  hamburger.setAttribute('aria-expanded', !expanded);
-  navMenu.setAttribute('aria-hidden', expanded);
+  const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+  hamburger.setAttribute('aria-expanded', String(!isExpanded));
+  navMenu.setAttribute('aria-hidden', String(isExpanded));
 });
-
-
-  // Remove focus to prevent yellow hover sticking
-  if (!isHidden) {
-    hamburger.blur();
-  }
 
 
 
