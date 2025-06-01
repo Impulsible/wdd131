@@ -39,7 +39,7 @@ const temples = [
     templeName: "Fukuoka Japan Temple",
     location: "Fukuoka, Japan",
     dedicated: "September 17, 2016",
-    area: "10,700 sq ft",
+    area: "10700",
     imageUrl: "https://www.churchofjesuschrist.org/imgs/6ba3ebd40bb1c16a76c34b8f5d5e82e2090a023d/full/1600%2C/0/default"
   },
   {
@@ -307,14 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("lastModified").textContent = document.lastModified;
 });
 
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-
-hamburger.addEventListener('click', () => {
-  const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-  hamburger.setAttribute('aria-expanded', String(!isExpanded));
-  navMenu.setAttribute('aria-hidden', String(isExpanded));
-});
 
 
 
