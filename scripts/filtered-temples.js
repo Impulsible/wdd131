@@ -316,14 +316,22 @@ hamburger.addEventListener('click', () => {
   navMenu.setAttribute('aria-hidden', String(isExpanded));
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('nav-menu');
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
 
-  hamburger.addEventListener('click', () => {
-    const isActive = navMenu.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded', isActive);
-    navMenu.setAttribute('aria-hidden', !isActive);
+  hamburger.addEventListener("click", function () {
+    const isVisible = navMenu.style.display === "flex";
+
+    if (isVisible) {
+      navMenu.style.display = "none";
+      hamburger.setAttribute("aria-expanded", "false");
+      navMenu.setAttribute("aria-hidden", "true");
+    } else {
+      navMenu.style.display = "flex";
+      hamburger.setAttribute("aria-expanded", "true");
+      navMenu.setAttribute("aria-hidden", "false");
+    }
   });
 });
 
