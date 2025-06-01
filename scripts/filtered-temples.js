@@ -316,21 +316,14 @@ hamburger.addEventListener('click', () => {
   navMenu.setAttribute('aria-hidden', String(isExpanded));
 });
 
-// toggleview.js
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
 
   hamburger.addEventListener('click', () => {
-    // Toggle the 'active' class on the nav menu to show/hide it
-    navMenu.classList.toggle('active');
-
-    // Toggle the aria-expanded attribute for accessibility
-    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', String(!isExpanded));
-
-    // Update aria-hidden attribute on nav menu accordingly
-    navMenu.setAttribute('aria-hidden', String(isExpanded));
+    const isActive = navMenu.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isActive);
+    navMenu.setAttribute('aria-hidden', !isActive);
   });
 });
 
