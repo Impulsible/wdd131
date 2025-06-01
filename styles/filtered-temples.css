@@ -458,38 +458,55 @@ html {
   background: #0059b3;
 }
 
-/* MOBILE menu hidden by default */
+/* MOBILE ONLY MENU OVERRIDE */
 @media (max-width: 600px) {
+  /* Hide nav menu by default */
   #nav-menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: #004080;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    z-index: 10;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
+    display: none !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    background-color: #004080 !important;
+    position: absolute !important;
+    top: 60px !important;
+    left: 0 !important;
+    z-index: 9999 !important;
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+    max-height: none !important;
+    overflow: visible !important;
   }
 
+  /* Show nav menu when active */
   #nav-menu.active {
-    display: flex;
-    max-height: 300px;
-  }
-}
-
-/* DESKTOP menu always visible and reset styles */
-@media (min-width: 601px) {
-  #nav-menu {
     display: flex !important;
-    flex-direction: row;
-    position: static;
-    max-height: none;
-    overflow: visible;
+  }
+
+  /* Hamburger button styling */
+  #hamburger {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #004080;
+    cursor: pointer;
+    z-index: 10000;
+    position: relative;
+  }
+
+  /* Remove hover/focus colors on nav buttons */
+  #nav-menu button {
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 1.2rem !important;
+    padding: 0.75rem 1rem !important;
+    text-align: left !important;
+    cursor: pointer !important;
+  }
+  #nav-menu button:hover,
+  #nav-menu button:focus {
+    background: none !important;
+    color: white !important;
+    outline: none !important;
   }
 }
