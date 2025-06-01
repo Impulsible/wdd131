@@ -464,18 +464,18 @@ html {
   #nav-menu {
     display: none !important;
     flex-direction: column !important;
-    width: auto !important; /* Change from 100% to auto for smaller width */
+    width: auto !important;
     background-color: #004080 !important;
-    position: fixed !important;      /* fixed to viewport */
+    position: fixed !important;
     top: 60px !important;
-    right: 10px !important;          /* move to right instead of left */
+    right: 10px !important;
     z-index: 9999 !important;
     padding: 1rem !important;
     border-radius: 8px !important;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
     max-height: none !important;
     overflow: visible !important;
-    min-width: 180px !important;     /* optional, sets min width */
+    min-width: 180px !important;
   }
 
   /* Show nav menu when active */
@@ -485,13 +485,14 @@ html {
 
   /* Hamburger button styling */
   #hamburger {
+    display: block;
     font-size: 2rem;
     background: none;
     border: none;
     color: #004080;
     cursor: pointer;
     z-index: 10000;
-    position: fixed;      /* fixed position */
+    position: fixed;
     top: 10px;
     right: 10px;
     padding: 0.25rem 0.5rem;
@@ -514,4 +515,5 @@ html {
     outline: none !important;
   }
 }
+
 
