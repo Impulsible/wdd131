@@ -458,9 +458,8 @@ html {
   background: #0059b3;
 }
 
-/* MOBILE ONLY MENU OVERRIDE */
 @media (max-width: 600px) {
-  /* Hide nav menu by default */
+  /* Hide nav menu by default with animation styles */
   #nav-menu {
     display: none !important;
     flex-direction: column !important;
@@ -473,14 +472,21 @@ html {
     padding: 1rem !important;
     border-radius: 8px !important;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
-    max-height: none !important;
-    overflow: visible !important;
     min-width: 180px !important;
+
+    /* Animation start state */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* Prevent interaction when hidden */
   }
 
-  /* Show nav menu when active */
+  /* Show nav menu with animation */
   #nav-menu.active {
     display: flex !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
   }
 
   /* Hamburger button styling */
@@ -496,6 +502,15 @@ html {
     top: 10px;
     right: 10px;
     padding: 0.25rem 0.5rem;
+    outline: none;
+  }
+
+  /* Remove yellow highlight on focus and active */
+  #hamburger:focus,
+  #hamburger:active {
+    outline: none;
+    background: transparent;
+    box-shadow: none;
   }
 
   /* Remove hover/focus colors on nav buttons */
