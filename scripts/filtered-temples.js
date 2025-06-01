@@ -307,6 +307,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("lastModified").textContent = document.lastModified;
 });
 
+const hamburger = document.getElementById('hamburger');
 
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+  const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+  hamburger.setAttribute('aria-expanded', String(!isExpanded));
+  navMenu.setAttribute('aria-hidden', String(isExpanded));
+});
 
 
