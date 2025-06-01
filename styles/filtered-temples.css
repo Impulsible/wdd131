@@ -466,3 +466,19 @@ html {
 #nav-menu.active {
   display: flex;
 }
+
+#nav-menu {
+  display: none;
+  flex-direction: column;
+}
+
+#nav-menu.show {
+  display: flex;
+}
+
+@media (min-width: 601px) {
+  #nav-menu {
+    display: flex !important;
+    flex-direction: row;
+  }
+}
