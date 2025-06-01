@@ -458,3 +458,11 @@ html {
   background: #0059b3;
 }
 
+#nav-menu {
+  display: none;
+  flex-direction: column;
+}
+
+#nav-menu.active {
+  display: flex;
+}
