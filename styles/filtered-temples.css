@@ -459,75 +459,59 @@ html {
 }
 
 @media (max-width: 600px) {
-  /* Hide nav menu by default with animation styles */
+  /* Hide nav by default - off screen to the right */
   #nav-menu {
-    display: none !important;
-    flex-direction: column !important;
-    width: auto !important;
-    background-color: #004080 !important;
     position: fixed !important;
-    top: 60px !important;
-    right: 10px !important;
-    z-index: 9999 !important;
-    padding: 1rem !important;
-    border-radius: 8px !important;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
-    min-width: 180px !important;
-
-    /* Animation start state */
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none; /* Prevent interaction when hidden */
+    top: 0 !important;
+    right: -100% !important; /* hide off screen right */
+    width: 250px !important;
+    height: 100vh !important;
+    background-color: #004080 !important;
+    flex-direction: column !important;
+    padding-top: 3rem !important;
+    transition: right 0.3s ease-in-out !important;
+    z-index: 10000 !important;
+    overflow-y: auto !important;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3) !important;
   }
 
-  /* Show nav menu with animation */
+  /* When active, slide in from right */
   #nav-menu.active {
+    right: 0 !important;
     display: flex !important;
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    pointer-events: auto !important;
   }
 
-  /* Hamburger button styling */
+  /* Hamburger & Close button styling */
   #hamburger {
-    display: block;
-    font-size: 2rem;
+    position: fixed;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2.5rem;
     background: none;
     border: none;
     color: #004080;
     cursor: pointer;
-    z-index: 10000;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    padding: 0.25rem 0.5rem;
-    outline: none;
+    z-index: 11000;
   }
 
-  /* Remove yellow highlight on focus and active */
-  #hamburger:focus,
-  #hamburger:active {
-    outline: none;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  /* Remove hover/focus colors on nav buttons */
+  /* Remove default outline & highlight */
   #nav-menu button {
     background: none !important;
     border: none !important;
     color: white !important;
     font-size: 1.2rem !important;
-    padding: 0.75rem 1rem !important;
+    padding: 1rem !important;
     text-align: left !important;
     cursor: pointer !important;
+    outline: none !important;
   }
   #nav-menu button:hover,
-  #nav-menu button:focus {
+  #nav-menu button:focus,
+  #nav-menu button:active {
     background: none !important;
     color: white !important;
     outline: none !important;
+    box-shadow: none !important;
   }
 }
 
