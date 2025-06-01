@@ -520,4 +520,68 @@ html {
     padding: 0.5rem 1rem;
   }
 }
+/* Hamburger Styles */
+#hamburger {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
+}
+
+/* Hidden nav by default */
+#nav-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #fff;
+  position: absolute;
+  top: 3.5rem;
+  right: 1rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Nav buttons */
+#nav-menu button {
+  background: none;
+  border: none;
+  padding: 1rem;
+  text-align: left;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Remove hover and active styles */
+#nav-menu button:hover,
+#nav-menu button:focus,
+#nav-menu button.active {
+  background-color: transparent;
+  color: inherit;
+}
+
+/* Desktop overrides */
+@media screen and (min-width: 768px) {
+  #hamburger {
+    display: none;
+  }
+
+  #nav-menu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    gap: 1rem;
+    border: none;
+    box-shadow: none;
+  }
+
+  #nav-menu button {
+    padding: 0.5rem 1rem;
+  }
+}
 
