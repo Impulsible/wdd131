@@ -458,23 +458,7 @@ html {
   background: #0059b3;
 }
 
-
-#nav-menu {
-  display: none;
-  flex-direction: column;
-}
-
-#nav-menu.show {
-  display: flex;
-}
-
-@media (min-width: 601px) {
-  #nav-menu {
-    display: flex !important;
-    flex-direction: row;
-  }
-}
-
+/* MOBILE menu hidden by default */
 @media (max-width: 600px) {
   #nav-menu {
     display: none;
@@ -495,6 +479,17 @@ html {
 
   #nav-menu.active {
     display: flex;
-    max-height: 300px; /* or enough height for all buttons */
+    max-height: 300px;
+  }
+}
+
+/* DESKTOP menu always visible and reset styles */
+@media (min-width: 601px) {
+  #nav-menu {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    max-height: none;
+    overflow: visible;
   }
 }
