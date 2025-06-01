@@ -321,14 +321,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const navMenu = document.getElementById("nav-menu");
 
   hamburger.addEventListener("click", function () {
-    const isVisible = navMenu.style.display === "flex";
+    const menuVisible = navMenu.style.display === "flex";
 
-    if (isVisible) {
+    if (menuVisible) {
+      // Hide menu
       navMenu.style.display = "none";
+      hamburger.textContent = "☰";
       hamburger.setAttribute("aria-expanded", "false");
       navMenu.setAttribute("aria-hidden", "true");
     } else {
+      // Show menu
       navMenu.style.display = "flex";
+      hamburger.textContent = "✖";
       hamburger.setAttribute("aria-expanded", "true");
       navMenu.setAttribute("aria-hidden", "false");
     }
