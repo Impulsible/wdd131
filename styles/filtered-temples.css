@@ -464,17 +464,18 @@ html {
   #nav-menu {
     display: none !important;
     flex-direction: column !important;
-    width: 100% !important;
+    width: auto !important; /* Change from 100% to auto for smaller width */
     background-color: #004080 !important;
-    position: absolute !important;
+    position: fixed !important;      /* fixed to viewport */
     top: 60px !important;
-    left: 0 !important;
+    right: 10px !important;          /* move to right instead of left */
     z-index: 9999 !important;
     padding: 1rem !important;
     border-radius: 8px !important;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
     max-height: none !important;
     overflow: visible !important;
+    min-width: 180px !important;     /* optional, sets min width */
   }
 
   /* Show nav menu when active */
@@ -490,7 +491,10 @@ html {
     color: #004080;
     cursor: pointer;
     z-index: 10000;
-    position: relative;
+    position: fixed;      /* fixed position */
+    top: 10px;
+    right: 10px;
+    padding: 0.25rem 0.5rem;
   }
 
   /* Remove hover/focus colors on nav buttons */
@@ -510,3 +514,4 @@ html {
     outline: none !important;
   }
 }
+
