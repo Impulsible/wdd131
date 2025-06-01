@@ -546,5 +546,30 @@ html {
     font-size: 1rem;
   }
 }
+@media (max-width: 600px) {
+  header {
+    position: relative;
+    padding: 1rem;
+  }
+
+  /* Hamburger absolutely positioned in top-right */
+  #hamburger {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #004080;
+    cursor: pointer;
+    z-index: 10000;
+  }
+}
+@media (max-width: 600px) {
+  header h1 {
+    text-align: center;
+    margin-right: 2.5rem; /* space for hamburger */
+  }
+}
 
 
