@@ -307,14 +307,24 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("lastModified").textContent = document.lastModified;
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('nav-menu');
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
 
-  hamburger.addEventListener('click', () => {
-    const isActive = navMenu.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded', isActive);
-    navMenu.setAttribute('aria-hidden', !isActive);
+  hamburger.addEventListener("click", function () {
+    const menuOpen = navMenu.classList.contains("active");
+
+    if (menuOpen) {
+      navMenu.classList.remove("active");
+      hamburger.textContent = "☰";
+      hamburger.setAttribute("aria-expanded", "false");
+      navMenu.setAttribute("aria-hidden", "true");
+    } else {
+      navMenu.classList.add("active");
+      hamburger.textContent = "✖";
+      hamburger.setAttribute("aria-expanded", "true");
+      navMenu.setAttribute("aria-hidden", "false");
+    }
   });
 });
 
