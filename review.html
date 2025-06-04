@@ -157,35 +157,33 @@
           return;
         }
 
-        const table = document.createElement("table");
-        table.innerHTML = `
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Rating</th>
-              <th>Install Date</th>
-              <th>Features</th>
-              <th>Review</th>
-              <th>User</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${reviews
-              .map(
-                (r) => `
-              <tr>
-                <td>${r.product}</td>
-                <td>${r.rating}</td>
-                <td>${r.installDate}</td>
-                <td>${r.features}</td>
-                <td>${r.reviewText}</td>
-                <td>${r.username}</td>
-                <td>${r.date}</td>
-              </tr>`
-              )
-              .join("")}
-          </tbody>
+       const table = document.createElement("table");
+table.innerHTML = `
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Rating</th>
+      <th>Install Date</th>
+      <th>Features</th>
+      <th>Review</th>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    ${reviews.map(
+      (r) => `
+      <tr>
+        <td data-label="Product">${r.product}</td>
+        <td data-label="Rating">${r.rating}</td>
+        <td data-label="Install Date">${r.installDate}</td>
+        <td data-label="Features">${r.features}</td>
+        <td data-label="Review">${r.reviewText}</td>
+        <td data-label="User">${r.username}</td>
+        <td data-label="Date">${r.date}</td>
+      </tr>`
+    ).join("")}
+  </tbody>
         `;
         wrapper.appendChild(table);
         document.getElementById("toggleTableBtn").textContent = "Hide Reviews";
