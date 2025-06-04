@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Review Form</title>
   <link rel="stylesheet" href="styles/form.css">
 </head>
@@ -72,21 +72,19 @@
         <label for="username">Your Name <span>(Optional)</span></label>
         <input type="text" id="username" name="username">
       </div>
+<input type="hidden" name="submitted" value="true">
 
       <!-- Submit -->
        
       <input type="submit" value="Post Review">
-      <form action="review.html?submitted=true" method="get" onsubmit="incrementReviewCount()">
-        
-        
-
     </form>
   </main>
 
   <footer>
-    <p>&copy;2025 ⚡ Henry Osuagwu ⚡<br />Lagos, Nigeria</p>
-    <p>Last Modification: <span id="lastModified"></span></p>
-  </footer>
+  <p><span class="symbol">✦</span> &copy;2025 Henry Osuagwu <span class="symbol">✦</span><br>
+     <i class="fas fa-location-dot"></i> Lagos, Nigeria</p>
+  <p><i class="fas fa-clock"></i> Last Modified: <span id="lastModified"></span></p>
+</footer>
 
   <script src="scripts/form.js" defer></script>
   <script>
