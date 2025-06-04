@@ -1042,5 +1042,78 @@ footer i {
   }
 }
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', system-ui, sans-serif;
+}
+
+/* General table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem auto;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+thead {
+  background-color: #f4f4f4;
+}
+
+/* Zebra striping */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* === Mobile Styles: Convert table rows to vertical scrollable cards === */
+@media screen and (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  table {
+    border: none;
+    margin: 1rem;
+  }
+
+  tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    max-height: 75vh; /* Adjust scroll height as needed */
+    padding-right: 0.5rem;
+  }
+
+  tr {
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding: 0.5rem 0;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #555;
+  }
 }
