@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Confirmation page for submitted product reviews. See your review summary and total reviews submitted.">
-  <meta name="author" content="Henry Osuagwu">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Confirmation page for submitted product reviews. See your review summary and total reviews submitted." />
+  <meta name="author" content="Henry Osuagwu" />
 
-  <!-- ✅ Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 
   <title>Review Confirmation</title>
-  <link rel="stylesheet" href="styles/form.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/form.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 </head>
 
-</head>
 <body>
   <header>
     <h1>Thank You for Your Review!</h1>
@@ -29,191 +31,200 @@
       <div id="reviewSummaryContent">
         <p class="no-reviews-message">No reviews available.</p>
       </div>
-    </section>
 
-    <section class="all-reviews">
-      <h2>All Submitted Reviews</h2>
-      <div id="reviewTableWrapper">
-        <div class="review-actions">
-          <button class="toggle-btn" id="toggleTableBtn">Show Reviews</button>
-          <button class="export-btn" id="exportBtn">Export to CSV</button>
+      <!-- Moved the "All Submitted Reviews" section inside reviewSummarySection -->
+      <section class="all-reviews">
+        <h2>All Submitted Reviews</h2>
+        <div id="reviewTableWrapper">
+          <div class="review-actions">
+            <button class="toggle-btn" id="toggleTableBtn">Show Reviews</button>
+            <button class="export-btn" id="exportBtn">Export to CSV</button>
+          </div>
         </div>
-      </div>
+      </section>
     </section>
   </main>
 
   <footer>
-    <p><span class="symbol">✦</span> &copy;2025 Henry Osuagwu <span class="symbol">✦</span><br>
+    <p>
+      <span class="symbol">✦</span> &copy;2025 Henry Osuagwu
+      <span class="symbol">✦</span><br />
       <i class="fas fa-location-dot"></i> Lagos, Nigeria
     </p>
     <p><i class="fas fa-clock"></i> Last Modified: <span id="lastModified"></span></p>
   </footer>
 
   <script>
-  const countKey = "reviewCount";
-  const allReviewsKey = "allReviews";
+    const countKey = "reviewCount";
+    const allReviewsKey = "allReviews";
 
-  function getQueryParams() {
-    const params = {};
-    const query = window.location.search.slice(1);
-    query.split("&").forEach((pair) => {
-      const [key, val] = pair.split("=");
-      const decoded = decodeURIComponent((val || "").replace(/\+/g, " "));
-      if (params[key]) {
-        params[key] = [].concat(params[key], decoded);
-      } else {
-        params[key] = decoded;
-      }
-    });
-    return params;
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const params = getQueryParams();
-
-    // ✅ INCREMENT REVIEW COUNT ON EVERY VISIT IF submitted=true
-    if (params.submitted === "true") {
-      let count = parseInt(localStorage.getItem(countKey)) || 0;
-      localStorage.setItem(countKey, ++count);
-    }
-
-    // ✅ DISPLAY COUNT
-    const count = localStorage.getItem(countKey) || "0";
-    document.getElementById("reviewCount").textContent = count;
-
-    // ✅ Show optional message
-    const reviewCountMessage = document.getElementById("reviewCountMessage");
-    if (reviewCountMessage) {
-      reviewCountMessage.textContent = `Total reviews submitted: ${count}`;
-    }
-
-    // ✅ SHOW SUMMARY if submitted
-    if (params.submitted === "true") {
-      const product = params.productName || "N/A";
-      const rating = params.rating || "N/A";
-      const installDate = params.installDate || "N/A";
-      const features = Array.isArray(params.features)
-        ? params.features.join(", ")
-        : params.features || "None";
-      const reviewText = params.review || "No written review.";
-      const username = params.username || "Anonymous";
-
-      const summaryHTML = `
-        <h2>Review Summary</h2>
-        <ul>
-          <li><strong>Product:</strong> ${product}</li>
-          <li><strong>Rating:</strong> ${rating} star(s)</li>
-          <li><strong>Installation Date:</strong> ${installDate}</li>
-          <li><strong>Features Found Useful:</strong> ${features}</li>
-          <li><strong>Review:</strong> ${reviewText}</li>
-          <li><strong>Submitted by:</strong> ${username}</li>
-        </ul>
-        <button class="reset-btn" id="resetBtn">Reset All Reviews</button>
-      `;
-      document.getElementById("reviewSummaryContent").innerHTML = summaryHTML;
-
-      // ✅ SAVE REVIEW
-      const review = {
-        product,
-        rating,
-        installDate,
-        features,
-        reviewText,
-        username,
-        date: new Date().toLocaleString(),
-      };
-      const allReviews = JSON.parse(localStorage.getItem(allReviewsKey)) || [];
-      allReviews.push(review);
-      localStorage.setItem(allReviewsKey, JSON.stringify(allReviews));
-
-      // ✅ RESET BUTTON
-      document.getElementById("resetBtn").addEventListener("click", () => {
-        if (confirm("Are you sure you want to clear all reviews and reset the count?")) {
-          localStorage.removeItem(countKey);
-          localStorage.removeItem(allReviewsKey);
-          document.getElementById("reviewCount").textContent = "0";
-          document.getElementById("reviewSummaryContent").innerHTML = `<p class="no-reviews-message">No reviews available.</p>`;
-          document.querySelector("#reviewTableWrapper table")?.remove();
-          alert("All reviews and counters have been reset.");
+    function getQueryParams() {
+      const params = {};
+      const query = window.location.search.slice(1);
+      query.split("&").forEach((pair) => {
+        const [key, val] = pair.split("=");
+        const decoded = decodeURIComponent((val || "").replace(/\+/g, " "));
+        if (params[key]) {
+          params[key] = [].concat(params[key], decoded);
+        } else {
+          params[key] = decoded;
         }
       });
+      return params;
     }
 
-    // ✅ TOGGLE TABLE
-    document.getElementById("toggleTableBtn").addEventListener("click", () => {
-      const wrapper = document.getElementById("reviewTableWrapper");
-      const existingTable = wrapper.querySelector("table");
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = getQueryParams();
 
-      if (existingTable) {
-        existingTable.remove();
-        document.getElementById("toggleTableBtn").textContent = "Show Reviews";
-        return;
+      // Increment review count if submitted=true
+      if (params.submitted === "true") {
+        let count = parseInt(localStorage.getItem(countKey)) || 0;
+        localStorage.setItem(countKey, ++count);
       }
 
-      const reviews = JSON.parse(localStorage.getItem(allReviewsKey)) || [];
-      if (reviews.length === 0) {
-        alert("No reviews to show.");
-        return;
+      // Display count
+      const count = localStorage.getItem(countKey) || "0";
+      document.getElementById("reviewCount").textContent = count;
+
+      // Show summary if submitted
+      if (params.submitted === "true") {
+        const product = params.productName || "N/A";
+        const rating = params.rating || "N/A";
+        const installDate = params.installDate || "N/A";
+        const features = Array.isArray(params.features)
+          ? params.features.join(", ")
+          : params.features || "None";
+        const reviewText = params.review || "No written review.";
+        const username = params.username || "Anonymous";
+
+        const summaryHTML = `
+          <h2>Review Summary</h2>
+          <ul>
+            <li><strong>Product:</strong> ${product}</li>
+            <li><strong>Rating:</strong> ${rating} star(s)</li>
+            <li><strong>Installation Date:</strong> ${installDate}</li>
+            <li><strong>Features Found Useful:</strong> ${features}</li>
+            <li><strong>Review:</strong> ${reviewText}</li>
+            <li><strong>Submitted by:</strong> ${username}</li>
+          </ul>
+          <button class="reset-btn" id="resetBtn">Reset All Reviews</button>
+        `;
+        document.getElementById("reviewSummaryContent").innerHTML = summaryHTML;
+
+        // Save review
+        const review = {
+          product,
+          rating,
+          installDate,
+          features,
+          reviewText,
+          username,
+          date: new Date().toLocaleString(),
+        };
+        const allReviews = JSON.parse(localStorage.getItem(allReviewsKey)) || [];
+        allReviews.push(review);
+        localStorage.setItem(allReviewsKey, JSON.stringify(allReviews));
+
+        // Reset button
+        document.getElementById("resetBtn").addEventListener("click", () => {
+          if (
+            confirm(
+              "Are you sure you want to clear all reviews and reset the count?"
+            )
+          ) {
+            localStorage.removeItem(countKey);
+            localStorage.removeItem(allReviewsKey);
+            document.getElementById("reviewCount").textContent = "0";
+            document.getElementById("reviewSummaryContent").innerHTML = `<p class="no-reviews-message">No reviews available.</p>`;
+            document.querySelector("#reviewTableWrapper table")?.remove();
+            alert("All reviews and counters have been reset.");
+          }
+        });
       }
 
-      const table = document.createElement("table");
-      table.innerHTML = `
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Rating</th>
-            <th>Install Date</th>
-            <th>Features</th>
-            <th>Review</th>
-            <th>User</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${reviews.map(r => `
+      // Toggle Table button logic
+      document.getElementById("toggleTableBtn").addEventListener("click", () => {
+        const wrapper = document.getElementById("reviewTableWrapper");
+        const existingTable = wrapper.querySelector("table");
+
+        if (existingTable) {
+          existingTable.remove();
+          document.getElementById("toggleTableBtn").textContent = "Show Reviews";
+          return;
+        }
+
+        const reviews = JSON.parse(localStorage.getItem(allReviewsKey)) || [];
+        if (reviews.length === 0) {
+          alert("No reviews to show.");
+          return;
+        }
+
+        const table = document.createElement("table");
+        table.innerHTML = `
+          <thead>
             <tr>
-              <td>${r.product}</td>
-              <td>${r.rating}</td>
-              <td>${r.installDate}</td>
-              <td>${r.features}</td>
-              <td>${r.reviewText}</td>
-              <td>${r.username}</td>
-              <td>${r.date}</td>
-            </tr>`).join("")}
-        </tbody>
-      `;
-      wrapper.appendChild(table);
-      document.getElementById("toggleTableBtn").textContent = "Hide Reviews";
+              <th>Product</th>
+              <th>Rating</th>
+              <th>Install Date</th>
+              <th>Features</th>
+              <th>Review</th>
+              <th>User</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${reviews
+              .map(
+                (r) => `
+              <tr>
+                <td>${r.product}</td>
+                <td>${r.rating}</td>
+                <td>${r.installDate}</td>
+                <td>${r.features}</td>
+                <td>${r.reviewText}</td>
+                <td>${r.username}</td>
+                <td>${r.date}</td>
+              </tr>`
+              )
+              .join("")}
+          </tbody>
+        `;
+        wrapper.appendChild(table);
+        document.getElementById("toggleTableBtn").textContent = "Hide Reviews";
+      });
+
+      // Export to CSV button logic
+      document.getElementById("exportBtn").addEventListener("click", () => {
+        const reviews = JSON.parse(localStorage.getItem(allReviewsKey)) || [];
+        if (reviews.length === 0) {
+          alert("No reviews to export.");
+          return;
+        }
+
+        const headers = Object.keys(reviews[0]);
+        const csvRows = [
+          headers.join(","),
+          ...reviews.map((r) =>
+            headers
+              .map((h) => `"${(r[h] || "").replace(/"/g, '""')}"`)
+              .join(",")
+          ),
+        ];
+
+        const csvData = csvRows.join("\n");
+        const blob = new Blob([csvData], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "reviews.csv";
+        link.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // Last Modified
+      document.getElementById("lastModified").textContent = document.lastModified;
     });
-
-    // ✅ EXPORT TO CSV
-    document.getElementById("exportBtn").addEventListener("click", () => {
-      const reviews = JSON.parse(localStorage.getItem(allReviewsKey)) || [];
-      if (reviews.length === 0) {
-        alert("No reviews to export.");
-        return;
-      }
-
-      const headers = Object.keys(reviews[0]);
-      const csvRows = [
-        headers.join(","),
-        ...reviews.map(r => headers.map(h => `"${(r[h] || "").replace(/"/g, '""')}"`).join(","))
-      ];
-
-      const csvData = csvRows.join("\n");
-      const blob = new Blob([csvData], { type: "text/csv" });
-      const url = URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "reviews.csv";
-      link.click();
-      URL.revokeObjectURL(url);
-    });
-
-    // ✅ Last Modified
-    document.getElementById("lastModified").textContent = document.lastModified;
-  });
-</script>
+  </script>
 </body>
 </html>
