@@ -16,41 +16,44 @@
 </head>
 
 <body>
-  <header>
-    <h1>Thank You for Your Review!</h1>
-  </header>
+ <header>
+  <h1>Thank You for Your Review!</h1>
+</header>
 
-  <main>
-    <section class="review-summary-card" id="reviewSummarySection">
-      <p class="review-count-message">
-        Your review has been submitted successfully. You have submitted
-        <strong id="reviewCount">0</strong> reviews.
-      </p>
-      <div id="reviewSummaryContent">
-        <p class="no-reviews-message">No reviews available.</p>
+<main>
+  <section class="review-summary-card" id="reviewSummarySection">
+    <p class="review-count-message">
+      Your review has been submitted successfully. You have submitted
+      <strong id="reviewCount">0</strong> reviews.
+    </p>
+    <div id="reviewSummaryContent">
+      <p class="no-reviews-message">No reviews available.</p>
+    </div>
+
+    <!-- All Submitted Reviews Section -->
+    <section class="all-reviews">
+      <h2>All Submitted Reviews</h2>
+      <div class="review-actions">
+        <button class="toggle-btn" id="toggleTableBtn">Show Reviews</button>
+        <button class="export-btn" id="exportBtn">Export to CSV</button>
       </div>
 
-      <!-- Moved the "All Submitted Reviews" section inside reviewSummarySection -->
-      <section class="all-reviews">
-        <h2>All Submitted Reviews</h2>
-        <div id="reviewTableWrapper">
-          <div class="review-actions">
-            <button class="toggle-btn" id="toggleTableBtn">Show Reviews</button>
-            <button class="export-btn" id="exportBtn">Export to CSV</button>
-          </div>
-        </div>
-      </section>
+      <div id="reviewTableWrapper" class="responsive-table">
+        <!-- Table will be injected here -->
+      </div>
     </section>
-  </main>
+  </section>
+</main>
 
-  <footer>
-    <p>
-      <span class="symbol">✦</span> &copy;2025 Henry Osuagwu
-      <span class="symbol">✦</span><br />
-      <i class="fas fa-location-dot"></i> Lagos, Nigeria
-    </p>
-    <p><i class="fas fa-clock"></i> Last Modified: <span id="lastModified"></span></p>
-  </footer>
+<footer>
+  <p>
+    <span class="symbol">✦</span> &copy;2025 Henry Osuagwu
+    <span class="symbol">✦</span><br />
+    <i class="fas fa-location-dot"></i> Lagos, Nigeria
+  </p>
+  <p><i class="fas fa-clock"></i> Last Modified: <span id="lastModified"></span></p>
+</footer>
+
 
   <script>
     const countKey = "reviewCount";
