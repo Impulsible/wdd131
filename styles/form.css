@@ -1117,3 +1117,119 @@ tbody tr:nth-child(even) {
     color: #555;
   }
 }
+/* Scoped inside #reviewSummarySection only */
+#reviewSummarySection {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  font-family: Arial, sans-serif;
+  color: #222;
+  line-height: 1.5;
+}
+
+#reviewSummarySection .review-count-message {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+#reviewSummarySection .review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+#reviewSummarySection button.toggle-btn,
+#reviewSummarySection button.export-btn {
+  padding: 0.5rem 1rem;
+  background: #004466;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#reviewSummarySection .responsive-table {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+#reviewSummarySection table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+#reviewSummarySection th, 
+#reviewSummarySection td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+#reviewSummarySection thead {
+  background-color: #f0f0f0;
+}
+
+@media screen and (max-width: 768px) {
+  #reviewSummarySection {
+    padding: 1rem 0.75rem;
+  }
+
+  #reviewSummarySection .responsive-table {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  #reviewSummarySection table,
+  #reviewSummarySection thead,
+  #reviewSummarySection tbody,
+  #reviewSummarySection tr,
+  #reviewSummarySection th,
+  #reviewSummarySection td {
+    display: block;
+    width: 100%;
+  }
+
+  #reviewSummarySection thead {
+    display: none;
+  }
+
+  #reviewSummarySection tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    max-height: 60vh;
+  }
+
+  #reviewSummarySection tr {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+  }
+
+  #reviewSummarySection td {
+    position: relative;
+    padding: 0.5rem 0;
+    border: none;
+  }
+
+  #reviewSummarySection td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    color: #333;
+    margin-bottom: 4px;
+  }
+
+  #reviewSummarySection .review-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
