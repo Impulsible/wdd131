@@ -4,7 +4,7 @@ body {
   font-family: 'Ubuntu', sans-serif;
   background-color: #fff8f0;
   color: #100f0f;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 img {
@@ -43,7 +43,7 @@ nav {
 
 .site-logo {
   height: 50px;
-  margin-left: 0.5rem; /* push it slightly right */
+  margin-left: 0.7rem; /* push it slightly right */
 }
 
 
@@ -90,7 +90,8 @@ nav {
 }
 
 .site-logo {
-  height: 40px;
+  height: 50px;
+  margin-left: 0.5rem;
 }
 
 /* Default desktop nav-links */
@@ -1321,72 +1322,10 @@ footer p {
   margin-bottom: 1rem;
 }
 
-
-@media (max-width: 767px) {
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f90;
-    padding: 0.75rem 1rem;
-    position: relative;
-  }
-
-  .site-logo {
-    height: 40px;
-  }
-
-  #menu-toggle {
-    display: block;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-  }
-
-  #nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: white;
-    width: 200px;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-  }
-
-  #nav-links.open {
-    display: flex;
-  }
-
-  #nav-links li {
-    margin-bottom: 1rem;
-  }
-
-  #nav-links li:last-child {
-    margin-bottom: 0;
-  }
-
-  .nav-link {
-    text-decoration: none;
-    color: #333;
-  }
-
-  .nav-link.active {
-    font-weight: bold;
-    color: #d00;
-  }
-}
-
-
-
 .nav-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;;
+  align-items: center;
   padding: 0.75rem 1rem;
   position: relative;
   z-index: 1000;
@@ -1396,10 +1335,8 @@ footer p {
   height: 40px;
 }
 
-/* Default nav-links for desktop */
+/* Shared nav link styles */
 #nav-links {
-  display: flex;
-  gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1427,11 +1364,11 @@ footer p {
   }
 
   #nav-links {
-    flex-direction: column;
     position: absolute;
     top: -300px;
     left: 0;
     width: 100%;
+    flex-direction: column;
     background-color: white;
     padding: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -1464,9 +1401,14 @@ footer p {
     background: none;
     box-shadow: none;
     padding: 0;
+    gap: 1.5rem;
+    display: flex;
   }
 
   #nav-links li {
     margin-bottom: 0;
+    margin-top: 0;
+  padding-top: 0;
   }
 }
+
