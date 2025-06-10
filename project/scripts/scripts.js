@@ -299,34 +299,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  document.addEventListener("DOMContentLoaded", function () {
-  const toggleButton = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-
-  if (toggleButton && navLinks) {
-    toggleButton.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      const expanded = navLinks.classList.contains('open');
-      toggleButton.setAttribute('aria-expanded', expanded);
-    });
-  }
-
-  // Highlight current page
-  const currentPage = window.location.pathname.split("/").pop();
-  document.querySelectorAll('.nav-link').forEach(link => {
-    if (link.getAttribute('data-page') === currentPage) {
-      link.classList.add('active');
-    }
-  });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const toggleButton = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
-
-  toggleButton.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-    const expanded = toggleButton.getAttribute("aria-expanded") === "true";
-    toggleButton.setAttribute("aria-expanded", String(!expanded));
-  });
-});
+  
