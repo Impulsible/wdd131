@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // === Header: Toggle hamburger ===
+  // === Hamburger Menu ===
   const toggleButton = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
 
   if (toggleButton && navLinks) {
     toggleButton.addEventListener('click', () => {
       navLinks.classList.toggle('open');
+      const expanded = navLinks.classList.contains('open');
+      toggleButton.setAttribute('aria-expanded', expanded);
     });
   }
 
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // === Snack of the Day ===
   const snacks = [
-    { name: "Puff-Puff - Sweet, fluffy fried dough balls.", image: "images/puff2.webp", alt: "Golden brown puff-puff balls frying" },
+    { name: "Puff-Puff - Sweet, fluffy fried dough balls.", image: "images/puff3.webp", alt: "Golden brown puff-puff balls frying" },
     { name: "Suya - Grilled, spicy meat skewer with yaji spice.", image: "images/suya1.webp", alt: "Grilled spicy suya skewers" },
     { name: "Chin Chin - Crunchy, sweet fried snack bites.", image: "images/chinchin.jpg", alt: "Bowl of crunchy chin chin" },
     { name: "Boli - Roasted plantain, soft and smoky.", image: "images/boli.jpg", alt: "Roasted plantain on fire" },
@@ -77,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const filterButtons = document.querySelectorAll('.filter-buttons button');
   const snackSections = document.querySelectorAll('.snack-section');
 
-  if (filterButtons.length > 0 && snackSections.length > 0) {
+  if (filterButtons.length && snackSections.length) {
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         const filter = button.dataset.filter;
@@ -124,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.disabled = false;
         submitBtn.textContent = "Send Message";
 
-        // Auto-hide message
         setTimeout(() => {
           confirmMsg.textContent = "";
         }, 4000);
@@ -134,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.warn("🚨 One or more contact form elements could not be found on this page.");
   }
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
   // === Header: Toggle hamburger ===
