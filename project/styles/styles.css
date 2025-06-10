@@ -1232,4 +1232,24 @@ footer p {
   margin-bottom: 1rem;
 }
 
+#nav-links {
+  display: none;
+  flex-direction: column;
+  background-color: #fff; /* optional styling */
+}
+
+#nav-links.show {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  #nav-links {
+    display: flex !important;
+    flex-direction: row;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+}
 
