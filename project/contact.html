@@ -9,6 +9,13 @@
   <title>Contact Us | Naija Snacks</title>
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="styles/styles.css">
+   <script src="scripts/scripts.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
 </head>
 <body>
   <header>
@@ -27,7 +34,7 @@
   <main>
     <section class="contact-intro">
       <h2>Contact Naija Snacks</h2>
-      <p>We'd love to hear from you! Whether you're suggesting a snack, sharing a memory, or asking a question—drop us a message below.</p>
+      <p>We'd love to hear from you! Whether you're suggesting a snack, sharing a memory, or asking a question, drop us a message below.</p>
     </section>
 
     <section class="contact-form-section">
@@ -49,108 +56,102 @@
     </section>
 
     <section class="team-section">
-      <h2>Meet the Team</h2>
-      <div class="team-grid">
-        <div class="team-member">
-          <img src="images/amaka.png" alt="Amaka Obi">
-          <h4>Amaka Obi</h4>
-          <p>Creative Director</p>
-          <div class="member-links">
-            <a href="#">🌐 Bio</a>
-            <a href="https://facebook.com" target="_blank">📘</a>
-            <a href="https://instagram.com" target="_blank">📸</a>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="images/chu.png" alt="Chinedu Okeke">
-          <h4>Chinedu Okeke</h4>
-          <p>Food Researcher</p>
-          <div class="member-links">
-            <a href="#">🌐 Bio</a>
-            <a href="https://twitter.com" target="_blank">🐦</a>
-            <a href="https://facebook.com" target="_blank">📘</a>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="images/profile.jpg" alt="Henry Osuagwu">
-          <h4>Henry Osuagwu</h4>
-          <p>Web Developer</p>
-          <div class="member-links">
-            <a href="#">🌐 Bio</a>
-            <a href="https://instagram.com" target="_blank">📸</a>
-            <a href="https://twitter.com" target="_blank">🐦</a>
-          </div>
-        </div>
+  <h2>Meet the Team</h2>
+  <div class="team-grid">
+    
+    <div class="team-member">
+      <img src="images/amaka.png" alt="Amaka Obi">
+      <h4>Amaka Obi</h4>
+      <p>Creative Director</p>
+      <div class="member-links">
+        <a href="#" class="bio-toggle">🌐 Bio</a>
+        <a href="https://facebook.com" target="_blank">📘</a>
+        <a href="https://instagram.com" target="_blank">📸</a>
       </div>
-    </section>
-
-  <footer>
-    <div class="footer-content">
-      <p>© <span id="year">2025</span> 🌮 <span id="siteName">Naija Snacks</span> 🌮 Lagos, Nigeria</p>
-      <p>Last Modification: <span id="lastModified">2025-06-09 20:51:14</span></p>
-      <div class="social-links">
-        <a href="https://facebook.com" target="_blank" aria-label="Facebook">📘</a>
-        <a href="https://instagram.com" target="_blank" aria-label="Instagram">📸</a>
-        <a href="https://twitter.com" target="_blank" aria-label="Twitter">🐦</a>
+      <div class="bio">
+        <p>
+          Amaka breathes life into every pixel and flavor on this site. With a background in design and a heart rooted in tradition, she transforms everyday Nigerian snacks into visual storytelling masterpieces. Her creativity is fueled by childhood memories of festive street feasts in Enugu, where puff-puff and chin chin were more than food they were moments of joy. Amaka believes in preserving culture through design and delights in showcasing the beauty of Naija on every screen.
+        </p>
       </div>
     </div>
-  </footer>
 
-  <!-- ✅ JavaScript for form, year, autofill -->
-  <script>
-  
-      // Autofill from URL params
-      const params = new URLSearchParams(window.location.search);
-      const nameField = document.getElementById("name");
-      const emailField = document.getElementById("email");
-      const msgField = document.getElementById("message");
+    <div class="team-member">
+      <img src="images/chu.png" alt="Chinedu Okeke">
+      <h4>Chinedu Okeke</h4>
+      <p>Food Researcher</p>
+      <div class="member-links">
+        <a href="#" class="bio-toggle">🌐 Bio</a>
+        <a href="https://twitter.com" target="_blank">🐦</a>
+        <a href="https://facebook.com" target="_blank">📘</a>
+      </div>
+      <div class="bio">
+        <p>
+          Chinedu is the brains behind the flavors. A culinary historian and street food enthusiast, he has traveled across Nigeria to document the origins, techniques, and meaning behind every beloved snack. Whether it's the perfect ratio of yaji for suya or the ideal puff-puff rise time, Chinedu brings cultural depth and flavor authenticity to the project. His passion lies in telling stories through taste and keeping Nigerian snack heritage alive.
+        </p>
+      </div>
+    </div>
 
-      if (params.has("name")) nameField.value = params.get("name");
-      if (params.has("email")) emailField.value = params.get("email");
-      if (params.has("message")) msgField.value = params.get("message");
+    <div class="team-member">
+      <img src="images/profile.jpg" alt="Henry Osuagwu">
+      <h4>Henry Osuagwu</h4>
+      <p>Web Developer</p>
+      <div class="member-links">
+        <a href="#" class="bio-toggle">🌐 Bio</a>
+        <a href="https://instagram.com" target="_blank">📸</a>
+        <a href="https://twitter.com" target="_blank">🐦</a>
+      </div>
+      <div class="bio">
+        <p>
+          Henry turns vision into function. A passionate web developer with a love for culture-driven digital storytelling, he crafted this experience to blend tradition with modern technology. From lazy-loading images to optimized performance, every click and scroll is powered by Henry's detail-oriented code. When he’s not coding, he’s enjoying puff-puff from his neighborhood vendor in Lagos, always dreaming up ways to bring Naija to the world wide web.
+        </p>
+      </div>
+    </div>
 
-      // Form logic
-      const form = document.getElementById("contactForm");
-      const confirmMsg = document.getElementById("confirmation-message");
-      const submitBtn = document.getElementById("submitBtn");
+</section>
 
-      if (form) {
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
+<section class="address-section">
+  <h2>Find Us in Surulere</h2>
+  <div class="address-content">
+    <div class="address-text">
+      <p><strong>Naija Snacks HQ</strong></p>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Pepper Soup Avenue, Surulere, Lagos, Nigeria</p>
+      <p><i class="fas fa-phone-alt"></i> +234 812 345 6789</p>
+      <p><i class="fas fa-clock"></i> Mon - Sat, 9am - 6pm</p>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
 
-          const name = nameField.value.trim();
-          const email = emailField.value.trim();
-          const message = msgField.value.trim();
 
-          if (!name || !email || !message) {
-            confirmMsg.textContent = "⚠️ Please fill in all required fields.";
-            confirmMsg.style.color = "red";
-            return;
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.bio-toggle').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const thisBio = this.closest('.team-member').querySelector('.bio');
+        const allBios = document.querySelectorAll('.team-member .bio');
+
+        allBios.forEach(bio => {
+          if (bio !== thisBio) {
+            bio.classList.remove('show');
           }
-
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Sending...";
-
-          setTimeout(() => {
-            confirmMsg.textContent = "✅ Thank you for contacting Naija Snacks! We'll get back to you soon.";
-            confirmMsg.style.color = "green";
-            form.reset();
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Send Message";
-          }, 1200);
         });
-      }
+
+        thisBio.classList.toggle('show');
+      });
     });
-    
-  </script>
-  <script>
-  window.addEventListener("error", function (e) {
-    if (e.filename && e.filename.includes("main.js")) {
-      e.stopImmediatePropagation();
-      return false;
-    }
-  }, true);
+  });
 </script>
 
+
+  <footer>
+      <p>© <span id="year"></span><span id="siteName">Naija Snacks</span>Lagos, Nigeria</p>
+      <p>Last Modification: <span id="lastModified">2025-06-09 20:51:14</span></p>
+  </footer>
 </body>
 </html>
