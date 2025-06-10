@@ -98,12 +98,7 @@
 
   <!-- ✅ JavaScript for form, year, autofill -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Update footer
-      document.getElementById("year").textContent = new Date().getFullYear();
-      document.getElementById("lastModified").textContent = document.lastModified;
-      document.getElementById("siteName").textContent = "🌮 Naija Snacks 🌮";
-
+  
       // Autofill from URL params
       const params = new URLSearchParams(window.location.search);
       const nameField = document.getElementById("name");
