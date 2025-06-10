@@ -134,6 +134,7 @@ blockquote {
   padding-left: 1rem;
   border-left: 3px solid #b30000;
   animation: fadeIn 2s ease-in;
+  font-display: justify;
 }
 
 @keyframes fadeIn {
@@ -546,6 +547,7 @@ footer {
   display: block;
 }
 
+
 .contact-form-section form {
       background: #fff8f0;
       border: 1px solid #ddd;
@@ -615,12 +617,74 @@ footer {
 .team-member img {
   width: 128%;
   height: 330px;
-  object-fit: cover; /* Ensures full coverage without distortion */
+  object-fit: cover;
+  object-position: center 20%; /* Shifts image down to avoid top cut */
   border-top-left-radius: 12px;
   border-top-right-radius: 10px;
   display: block;
 }
 
+ .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    align-items: start;
+  }
+
+  .team-member {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    transition: all 0.3s ease;
+    height: auto;
+  }
+
+ .team-member .bio {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+  margin-top: 0;
+  text-align: justify;
+}
+
+.bio.show {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.member-links a {
+  margin: 0 0.3rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.member-links a:hover {
+  transform: scale(1.2);
+  color: #ff5722;
+}
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
 .team-member h4 {
   margin: 0.6rem 0 0.25rem;
@@ -674,11 +738,7 @@ footer {
   border-top: 2px solid #007a12;
 }
 
-.footer-content .social-links a {
-  margin-left: 10px;
-  font-size: 1.2rem;
-  text-decoration: none;
-}
+
 
 .contact-intro {
   text-align: center;
@@ -924,24 +984,7 @@ footer {
   margin: 0.4rem 0;
 }
 
-.footer-content .social-links {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 0.75rem;
-}
 
-.footer-content .social-links a {
-  font-size: 1.4rem;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-
-.footer-content .social-links a:hover {
-  transform: scale(1.2);
-}
 /* Responsive Styles */
 @media (max-width: 768px) {
   #menu-toggle {
@@ -965,4 +1008,226 @@ footer {
     padding: 1rem;
     text-align: center;
   }
+}
+
+.snack-section p {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.6;
+}
+
+p {
+  text-align: justify;
+}
+
+footer {
+  text-align: center !important;
+  display: block !important;
+  margin: 0 auto !important;
+  padding: 1rem !important;
+  background-color: #f8f8f8; /* optional */
+  color: #333 !important;
+}
+
+footer p {
+  display: block !important;
+  margin: 0.5rem auto !important;
+  text-align: center !important;
+}
+
+.map-section {
+  margin-top: 3rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.map-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.map-section .address {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.map-section .hours {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.map-container {
+  max-width: 100%;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.map-social-links {
+  margin-top: 2rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .map-container {
+    height: 300px;
+  }
+
+  .social-icons {
+    font-size: 1.8rem;
+  }
+}
+
+.address-section {
+  padding: 2rem 1rem;
+  background-color: #fff7f0;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 700px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.address-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.address-text p {
+  margin: 0.75rem 0;
+}
+
+.address-text i {
+  margin-right: 0.5rem;
+  color: #cc4400;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  font-size: 1.5rem;
+  color: #cc4400;
+  margin: 0 0.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #ff7733;
+}
+
+/* Optional: Responsive alignment for larger screens */
+@media (min-width: 768px) {
+  .address-text {
+    text-align: center;
+  }
+}
+
+.team-member .bio {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+  margin-top: 0;
+  text-align: justify;
+}
+
+.bio.show {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.member-links a {
+  margin: 0 0.3rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.member-links a:hover {
+  transform: scale(1.2);
+  color: #ff5722;
+}
+
+.team-member {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-member .bio {
+  margin-top: 1rem;
+  text-align: justify;
+  max-width: 320px;
+  display: none; /* Hidden by default */
+}
+
+.bio.show {
+  display: block;
+}
+
+.team-member .bio p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.team-member {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  transition: all 0.3s ease;
+  height: auto;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: start;
+}
+
+.contact-intro h2 {
+  font-size: 3rem; /* You can increase this to 3rem or more if needed */
+  font-weight: 700;
+  color: #007a12; /* Optional: brand color */
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.references-page h2 {
+  font-size: 3rem; /* You can increase this to 3rem or more if needed */
+  font-weight: 700;
+  color: #007a12; /* Optional: brand color */
+  text-align: center;
+  margin-bottom: 1rem;
 }
