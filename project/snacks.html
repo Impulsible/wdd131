@@ -7,7 +7,7 @@
   <meta name="keywords" content="Nigerian street food, puff-puff, suya, chin chin, Naija snacks">
   <meta name="author" content="Naija Snacks Project - BYU-I WDD 131">
   <title>Snacks Menu | Naija Snacks</title>
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.webp" type="image/x-icon">
   <link rel="stylesheet" href="styles/styles.css">
   <script src="scripts/scripts.js" defer></script>
  
@@ -15,7 +15,7 @@
 <body>
   <header>
     <nav>
-      <img src="images/uudypaol.png" alt="Naija Snacks logo" class="site-logo">
+      <img src="images/intro.webp" alt="Naija Snacks logo" class="site-logo">
       <button id="menu-toggle" aria-label="Toggle Navigation Menu">&#9776;</button>
       <ul id="nav-links">
         <li><a href="index.html" class="nav-link" data-page="index.html">Home</a></li>
@@ -75,8 +75,8 @@
 
 <section class="snack-section" id="suya" data-category="grilled spicy">
   <h3>Suya</h3>
-  <img src="images/people.jpg" 
-       srcset="images/people.jpg 480w, images/people.jpg 800w" 
+  <img src="images/joint.webp" 
+       srcset="images/joint.webp 480w, images/joint.webp 800w" 
        sizes="(max-width: 600px) 480px, 800px" 
        alt="Grilled spicy suya skewers"
        title="Spicy grilled beef with yaji seasoning"
@@ -106,8 +106,8 @@
 
 <section class="snack-section" id="chinchin" data-category="fried sweet">
   <h3>Chin Chin</h3>
-  <img src="images/chin1.jpg" 
-       srcset="images/chin1.jpg 480w, images/chin1.jpg 800w" 
+  <img src="images/chin1.webp" 
+       srcset="images/chin1.webp 480w, images/chin1.webp 800w" 
        sizes="(max-width: 600px) 480px, 800px" 
        alt="Bowl of crunchy chin chin"
        title="Crunchy sweet dough cubes enjoyed during holidays"
@@ -147,14 +147,14 @@
       </div>
     </div>
     <div class="carousel-item" data-time="Afternoon">
-      <img src="images/chinchin.jpg" alt="Bowl of crunchy chin chin" loading="lazy">
+      <img src="images/chinchin.webp" alt="Bowl of crunchy chin chin" loading="lazy">
       <div class="carousel-text">
         <h4>Chin Chin</h4>
         <p>A crunchy snack often enjoyed between meals.</p>
       </div>
     </div>
     <div class="carousel-item" data-time="Evening">
-      <img src="images/intro.jpg" alt="Spicy grilled suya" loading="lazy">
+      <img src="images/people.webp" alt="Spicy grilled suya" loading="lazy">
       <div class="carousel-text">
         <h4>Suya</h4>
         <p>Grilled meat best served hot at night markets.</p>
@@ -169,10 +169,18 @@
   <h3>Snack of the Day</h3>
   <button id="generate-snack">Get Today's Snack</button>
   <div id="snack-result" style="margin-top: 1rem;">
-    <p></p>
-    <img id="snack-image" src="" alt="" style="max-width: 300px; display: none; border-radius: 8px;" loading="lazy">
+    <p id="snack-name"></p>
+    <!-- Placeholder image will be swapped by JavaScript -->
+    <img
+      id="snack-image"
+      src="images/snack.webp"
+      alt="Snack of the Day"
+      style="max-width: 300px; display: none; border-radius: 8px;"
+      loading="lazy">
   </div>
 </section>
+
+
   </main>
 
 
@@ -195,12 +203,12 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       name: "Chin Chin - Crunchy, sweet fried snack bites.",
-      image: "images/chinchin.jpg",
+      image: "images/chin2.webp",
       alt: "Bowl of crunchy chin chin"
     },
     {
       name: "Boli - Roasted plantain, soft and smoky.",
-      image: "images/boli.jpg",
+      image: "images/boli.webp",
       alt: "Roasted plantain on fire"
     },
     {
