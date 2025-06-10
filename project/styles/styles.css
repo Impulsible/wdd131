@@ -942,3 +942,27 @@ footer {
 .footer-content .social-links a:hover {
   transform: scale(1.2);
 }
+/* Responsive Styles */
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: block;
+  }
+
+  #nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    margin-top: 1rem;
+  }
+
+  #nav-links.open {
+    display: flex;
+  }
+
+  #nav-links li {
+    padding: 1rem;
+    text-align: center;
+  }
+}
