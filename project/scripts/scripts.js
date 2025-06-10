@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // === Snack of the Day ===
   const snacks = [
-    { name: "Puff-Puff - Sweet, fluffy fried dough balls.", image: "images/puff2.webp", alt: "Golden brown puff-puff balls frying" },
+    { name: "Puff-Puff - Sweet, fluffy fried dough balls.", image: "images/puff3.webp", alt: "Golden brown puff-puff balls frying" },
     { name: "Suya - Grilled, spicy meat skewer with yaji spice.", image: "images/suya1.webp", alt: "Grilled spicy suya skewers" },
     { name: "Chin Chin - Crunchy, sweet fried snack bites.", image: "images/chinchin.jpg", alt: "Bowl of crunchy chin chin" },
     { name: "Boli - Roasted plantain, soft and smoky.", image: "images/boli.jpg", alt: "Roasted plantain on fire" },
