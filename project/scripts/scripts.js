@@ -298,5 +298,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
 
-  
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+
+  // Optional: Toggle the aria-expanded value for accessibility
+  const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+  menuToggle.setAttribute("aria-expanded", !expanded);
+});
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+});
