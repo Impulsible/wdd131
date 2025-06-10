@@ -1234,7 +1234,7 @@ footer p {
 
 
 @media (max-width: 767px) {
-  header .nav-container {
+  .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1243,11 +1243,11 @@ footer p {
     position: relative;
   }
 
-  header .site-logo {
+  .site-logo {
     height: 40px;
   }
 
-  header #menu-toggle {
+  #menu-toggle {
     display: block;
     font-size: 2rem;
     background: none;
@@ -1256,7 +1256,7 @@ footer p {
     color: white;
   }
 
-  header #nav-links {
+  #nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
@@ -1269,24 +1269,24 @@ footer p {
     z-index: 1000;
   }
 
-  header #nav-links.open {
+  #nav-links.open {
     display: flex;
   }
 
-  header #nav-links li {
+  #nav-links li {
     margin-bottom: 1rem;
   }
 
-  header #nav-links li:last-child {
+  #nav-links li:last-child {
     margin-bottom: 0;
   }
 
-  header .nav-link {
+  .nav-link {
     text-decoration: none;
     color: #333;
   }
 
-  header .nav-link.active {
+  .nav-link.active {
     font-weight: bold;
     color: #d00;
   }
