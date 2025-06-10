@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore iconic Nigerian street snacks like Puff-Puff, Suya, and Chin Chin with pictures, ingredients, and fun facts.">
+  <meta name="keywords" content="Nigerian street food, puff-puff, suya, chin chin, Naija snacks">
+  <meta name="author" content="Naija Snacks Project - BYU-I WDD 131">
+  <title>Snacks Menu | Naija Snacks</title>
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="scripts/scripts.js" defer></script>
+ 
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="images/uudypaol.png" alt="Naija Snacks logo" class="site-logo">
+      <button id="menu-toggle" aria-label="Toggle Navigation Menu">&#9776;</button>
+      <ul id="nav-links">
+        <li><a href="index.html" class="nav-link" data-page="index.html">Home</a></li>
+        <li><a href="snacks.html" class="nav-link" data-page="snacks.html">Menu</a></li>
+        <li><a href="contact.html" class="nav-link" data-page="contact.html">Contact</a></li>
+        <li><a href="references.html" class="nav-link" data-page="references.html">References</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Explore Our Snacks</h2>
+    </section>
+
+    <section class="snack-filter">
+  <h3>Filter by Category</h3>
+  <div class="filter-buttons">
+    <button data-filter="all">All</button>
+    <button data-filter="fried">Fried</button>
+    <button data-filter="grilled">Grilled</button>
+    <button data-filter="sweet">Sweet</button>
+  </div>
+</section>
+
+
+  <section class="snack-section" id="puffpuff" data-category="fried sweet">
+  <h3>Puff-Puff</h3>
+  <img src="images/puff.webp" 
+       srcset="images/puff.webp 480w, images/puff.webp 800w" 
+       sizes="(max-width: 600px) 480px, 800px" 
+       alt="Golden brown puff-puff balls frying"
+       title="A popular sweet fried dough snack"
+       loading="lazy">
+  <p>Deep-fried to a golden brown perfection, Puff-Puff is a beloved West African street snack known for its slightly crisp exterior and soft, airy interior. Typically made with a simple mix of flour, sugar, yeast, water, and a hint of nutmeg, this doughy delight is often enjoyed as a quick bite on the go or served at social gatherings. The batter is allowed to rise until fluffy before being dropped in hot oil, where it puffs up into round, golden dough balls. Puff-Puff can be mildly sweet or extra sugary, depending on regional preferences, and is sometimes dusted with powdered sugar or served with spicy pepper sauce for contrast.</p>
+  <p class="fun-fact"><em>Fun Fact:</em> Puff-Puff is more than just a snack it's a cultural staple at weddings, birthdays, and festive celebrations throughout West Africa, especially in Nigeria, Ghana, and Cameroon!</p>
+
+  <div class="snack-like">
+    <button class="like-btn" data-snack="puffpuff" title="Click to like or unlike">👍 Like</button>
+    <span id="like-count-puffpuff">0</span> likes
+  </div>
+</section>
+
+<section class="snack-section" id="suya" data-category="grilled spicy">
+  <h3>Suya</h3>
+  <img src="images/people.jpg" 
+       srcset="images/people.jpg 480w, images/people.jpg 800w" 
+       sizes="(max-width: 600px) 480px, 800px" 
+       alt="Grilled spicy suya skewers"
+       title="Spicy grilled beef with yaji seasoning"
+       loading="lazy">
+  <p>A fiery grilled meat skewer made with thinly sliced beef, marinated in a spicy yaji (peanut-and-chili) mix, Suya is a beloved street food and a staple of nighttime markets across Nigeria. It's typically served with onions, tomatoes, and sometimes cabbage, all wrapped in newspaper or foil for easy takeaway.</p>
+<p class="fun-fact"><em>Fun Fact:</em> Suya originated from the Hausa people of northern Nigeria and is traditionally prepared by Mallams (Hausa street meat vendors). The grilling process often begins in the evening, filling the air with smoky aromas that draw in hungry passersby well into the night!</p>
+  <div class="snack-like">
+    <button class="like-btn" data-snack="suya" title="Click to like or unlike">👍 Like</button>
+    <span id="like-count-suya">0</span> likes
+  </div>
+</section>
+
+<section class="snack-section" id="chinchin" data-category="fried sweet">
+  <h3>Chin Chin</h3>
+  <img src="images/chin1.jpg" 
+       srcset="images/chin1.jpg 480w, images/chin1.jpg 800w" 
+       sizes="(max-width: 600px) 480px, 800px" 
+       alt="Bowl of crunchy chin chin"
+       title="Crunchy sweet dough cubes enjoyed during holidays"
+       loading="lazy">
+  <p>Crunchy and mildly sweet, Chin Chin is a snack made from fried flour dough, commonly enjoyed by all ages. Perfect for snacking on the go!</p>
+  <p class="fun-fact"><em>Fun Fact:</em> Chin Chin is especially popular during festive holidays like Christmas and Easter!</p>
+  <div class="snack-like">
+    <button class="like-btn" data-snack="chinchin" title="Click to like or unlike">👍 Like</button>
+    <span id="like-count-chinchin">0</span> likes
+  </div>
+</section>
+
+
+<section class="snack-carousel">
+  <h3>Snack Time Carousel</h3>
+  <div class="carousel">
+    <div class="carousel-item" data-time="Morning">
+      <img src="images/akara.webp" alt="Hot akara served for breakfast" loading="lazy">
+      <div class="carousel-text">
+        <h4>Akara</h4>
+        <p>Perfect for breakfast with pap or bread.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-time="Afternoon">
+      <img src="images/chinchin.jpg" alt="Bowl of crunchy chin chin" loading="lazy">
+      <div class="carousel-text">
+        <h4>Chin Chin</h4>
+        <p>A crunchy snack often enjoyed between meals.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-time="Evening">
+      <img src="images/intro.jpg" alt="Spicy grilled suya" loading="lazy">
+      <div class="carousel-text">
+        <h4>Suya</h4>
+        <p>Grilled meat best served hot at night markets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="snack-list"></div>
+
+<section class="snack-of-the-day">
+  <h3>Snack of the Day</h3>
+  <button id="generate-snack">Get Today's Snack</button>
+  <div id="snack-result" style="margin-top: 1rem;">
+    <p></p>
+    <img id="snack-image" src="" alt="" style="max-width: 300px; display: none; border-radius: 8px;" loading="lazy">
+  </div>
+</section>
+
+
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> <span id="siteName"></span> Maldives Island</p>
+    <p>Last Modification: <span id="lastModified"></span></p>
+  </footer>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const snacks = [
+    {
+      name: "Puff-Puff - Sweet, fluffy fried dough balls.",
+      image: "images/puff2.webp",
+      alt: "Golden brown puff-puff balls frying"
+    },
+    {
+      name: "Suya - Grilled, spicy meat skewer with yaji spice.",
+      image: "images/suya1.webp",
+      alt: "Grilled spicy suya skewers"
+    },
+    {
+      name: "Chin Chin - Crunchy, sweet fried snack bites.",
+      image: "images/chinchin.jpg",
+      alt: "Bowl of crunchy chin chin"
+    },
+    {
+      name: "Boli - Roasted plantain, soft and smoky.",
+      image: "images/boli.jpg",
+      alt: "Roasted plantain on fire"
+    },
+    {
+      name: "Akara - Fried bean cakes, crispy on the outside.",
+      image: "images/akara1.webp",
+      alt: "Hot akara on tray"
+    }
+  ];
+
+  const generateBtn = document.getElementById("generate-snack");
+  const snackText = document.querySelector("#snack-result p");
+  const snackImage = document.getElementById("snack-image");
+
+  generateBtn.addEventListener("click", () => {
+    const randomSnack = snacks[Math.floor(Math.random() * snacks.length)];
+    snackText.textContent = randomSnack.name;
+    snackImage.src = randomSnack.image;
+    snackImage.alt = randomSnack.alt;
+    snackImage.style.display = "block";
+  });
+});
+</script>
+
+</body>
+</html>
